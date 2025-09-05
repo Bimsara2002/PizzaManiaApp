@@ -1,0 +1,13 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvUsers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Users will appear here"
+        android:textSize="16sp"/>
+</LinearLayout>
