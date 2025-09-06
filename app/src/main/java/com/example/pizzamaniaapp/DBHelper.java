@@ -9,17 +9,57 @@ import android.database.Cursor;
 public class DBHelper extends SQLiteOpenHelper {
     public static final String DBNAME = "PizzaMania.db";
 
+<<<<<<< HEAD
     public DBHelper(Context context) {
+=======
+
+    public DBHelper(Context context) {
+        super(context, DBNAME, null, 2);
+>>>>>>> crud-admin
     }
 
     @Override
     public void onCreate(SQLiteDatabase MyDB) {
         MyDB.execSQL("create table users(username TEXT primary key, password TEXT, mobile TEXT)");
+<<<<<<< HEAD
+=======
+
+        //Create menu Table
+        MyDB.execSQL("CREATE TABLE menu(" +
+                "item_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "name TEXT NOT NULL, " +
+                "description TEXT, " +
+                "price REAL NOT NULL, " +
+                "image_url TEXT, " +
+                "category TEXT)");
+
+        // Cart Table
+        MyDB.execSQL("CREATE TABLE cart(" +
+                "cart_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "username TEXT, " +
+                "item_id INTEGER, " +
+                "quantity INTEGER, " +
+                "FOREIGN KEY(username) REFERENCES users(username), " +
+                "FOREIGN KEY(item_id) REFERENCES menu(item_id))");
+
+        //Insert Data
+        MyDB.execSQL("INSERT INTO menu (name, description, price, image_url, category) VALUES " +
+                "('Chicken Pizza', 'Spicy chicken with cheese', 1200, 'sample_pizza', 'Pizza')," +
+                "('Veggie Delight', 'Fresh vegetables and cheese', 950, 'veggie_pizza', 'Pizza')," +
+                "('Coca-Cola 1L', 'Chilled soft drink', 350, 'coke', 'Drinks')");
+
+>>>>>>> crud-admin
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase MyDB, int oldVersion, int newVersion) {
         MyDB.execSQL("drop table if exists users");
+<<<<<<< HEAD
+=======
+        MyDB.execSQL("DROP TABLE IF EXISTS menu");
+        MyDB.execSQL("DROP TABLE IF EXISTS cart");
+        onCreate(MyDB);
+>>>>>>> crud-admin
     }
 
     public Boolean insertData(String username, String password, String mobile) {
@@ -32,15 +72,72 @@ public class DBHelper extends SQLiteOpenHelper {
         return result != -1;
     }
 
+<<<<<<< HEAD
     public Boolean checkUsername(String username) {
         SQLiteDatabase MyDB = this.getReadableDatabase();
         Cursor cursor = MyDB.rawQuery("Select * from users where username = ?", new String[]{username});
         return cursor.getCount() > 0;
     }
 
+=======
+    public boolean addToCart(String username, int itemId, int quantity) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("username", username);
+        cv.put("item_id", itemId);
+        cv.put("quantity", quantity);
+        long result = db.insert("cart", null, cv);
+        return result != -1;
+    }
+
+    public Cursor getAllUsers() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery("SELECT * FROM users", null);
+    }
+
+    public Cursor getAllMenuItems() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery("SELECT * FROM menu", null);
+    }
+
+    public Boolean checkUsername(String username) {
+        SQLiteDatabase MyDB = this.getReadableDatabase();
+        Cursor cursor = MyDB.rawQuery(" Select * from users where username = ?", new String[]{username});
+        return cursor.getCount() > 0;
+    }
+
+    // Get Cart Items for a User
+    public Cursor getCartItems(String username) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery("SELECT c.cart_id, m.name, m.price, m.image_url, c.quantity " +
+                "FROM cart c INNER JOIN menu m ON c.item_id = m.item_id " +
+                "WHERE c.username = ?", new String[]{username});
+    }
+
+    // Clear Cart
+    public void clearCart(String username) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete("cart", "username=?", new String[]{username});
+    }
+
+>>>>>>> crud-admin
     public Boolean checkUsernamePassword(String username, String password) {
         SQLiteDatabase MyDB = this.getReadableDatabase();
         Cursor cursor = MyDB.rawQuery("Select * from users where username = ? and password = ?", new String[]{username, password});
         return cursor.getCount() > 0;
     }
+<<<<<<< HEAD
+=======
+
+    // Get menu items by category
+    public Cursor getMenuByCategory(String category) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        if (category.equals("All")) {
+            return db.rawQuery("SELECT * FROM menu", null);
+        } else {
+            return db.rawQuery("SELECT * FROM menu WHERE category = ?", new String[]{category});
+        }
+    }
+>>>>>>> crud-admin
 }

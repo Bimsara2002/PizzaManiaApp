@@ -47,4 +47,8 @@
             android:text="Don't have an account? Register" />
 
     </LinearLayout>
+<<<<<<< HEAD
 </RelativeLayout>
+=======
+</RelativeLayout>
+>>>>>>> crud-admin

@@ -20,6 +20,10 @@
             android:hint="Username"
             android:inputType="textPersonName"
             android:layout_marginBottom="15dp"
+<<<<<<< HEAD
+=======
+            android:background="@android:color/transparent"
+>>>>>>> crud-admin
             android:padding="10dp"/>
 
         <EditText
