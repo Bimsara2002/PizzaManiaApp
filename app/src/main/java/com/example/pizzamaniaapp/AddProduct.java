@@ -50,9 +50,9 @@ public class AddProduct extends AppCompatActivity {
         });
 
         btnAdd.setOnClickListener(v -> {
-            String name = etName.getText().toString();
-            String description = etDescription.getText().toString();
-            String priceStr = etPrice.getText().toString();
+            String name = etName.getText().toString().trim();
+            String description = etDescription.getText().toString().trim();
+            String priceStr = etPrice.getText().toString().trim();
 
             if (name.isEmpty() || priceStr.isEmpty() || selectedImageUri == null) {
                 Toast.makeText(this, "Name, Price and Image are required", Toast.LENGTH_SHORT).show();
