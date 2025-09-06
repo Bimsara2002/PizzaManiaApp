@@ -8,13 +8,8 @@ import android.database.Cursor;
 
 public class DBHelper extends SQLiteOpenHelper {
     public static final String DBNAME = "PizzaMania.db";
-    public Cursor getAllUsers() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        return db.rawQuery("SELECT * FROM users", null);
-    }
 
     public DBHelper(Context context) {
-        super(context, DBNAME, null, 1);
     }
 
     @Override
