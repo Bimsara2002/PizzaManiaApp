@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login_pizzaimage"
+    android:background="@drawable/admin_background"
     tools:context=".MainActivity">
 
     <!-- Your content inside a LinearLayout -->
@@ -40,11 +40,7 @@
             android:layout_marginBottom="10dp"
             android:text="Login" />
 
-        <Button
-            android:id="@+id/btnGoRegister"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Don't have an account? Register" />
+
 
     </LinearLayout>
 </RelativeLayout>

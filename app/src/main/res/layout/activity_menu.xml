@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/menu_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <!--App Logo -->
+    <ImageView
+        android:id="@+id/appLogo"
+        android:layout_width="500px"
+        android:layout_height="175px"
+        android:layout_margin="16dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/pizza_logo"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="Pizza Mania Logo" />
+
+    <!--Search Bar -->
+    <EditText
+        android:id="@+id/searchBar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/appLogo"
+        android:layout_margin="16dp"
+        android:hint="Search Food..."
+        android:textColorHint="#FFFFFF"
+        android:drawableStart="@android:drawable/ic_menu_search"
+        android:background="#000000"
+        android:padding="10dp" />
+
+    <!-- Category Tabs -->
+    <HorizontalScrollView
+        android:id="@+id/categoryTabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/searchBar"
+        android:scrollbars="none"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal">
+
+
+
+            <Button
+                android:id="@+id/allBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="All"
+                android:textColor="#ffffff"
+                android:backgroundTint="#e99934"
+                style="?android:attr/buttonBarButtonStyle"/>
+
+            <Button
+                android:id="@+id/pizzaBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#e99934"
+                android:text="Pizza"/>
+
+            <Button
+                android:id="@+id/drinksBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#e99934"
+                android:text="Drinks"/>
+
+            <Button
+                android:id="@+id/sidesBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#e99934"
+                android:text="Sides"/>
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- RecyclerView for Menu Items -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/menuRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/categoryTabs"
+        android:paddingBottom="80dp" />
+
+    <!--Floating Cart Button -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/cartFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_cart"
+        app:backgroundTint="#ff1d00"
+        app:tint="@android:color/white" />
+
+</RelativeLayout>
