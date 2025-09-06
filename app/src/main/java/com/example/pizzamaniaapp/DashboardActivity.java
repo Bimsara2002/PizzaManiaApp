@@ -22,14 +22,14 @@ public class DashboardActivity extends AppCompatActivity {
         btnAdmin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(DashboardActivity.this, AdminActivity.class));
+                startActivity(new Intent(DashboardActivity.this, AdminLogin.class));
             }
         });
 
         btnCustomer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(DashboardActivity.this, RegisterActivity.class));
+                startActivity(new Intent(DashboardActivity.this, LoginActivity.class));
             }
         });
     }

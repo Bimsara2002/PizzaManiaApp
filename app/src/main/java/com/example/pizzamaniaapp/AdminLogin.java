@@ -8,23 +8,24 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class LoginActivity extends AppCompatActivity {
+public class AdminLogin extends AppCompatActivity {
 
-    EditText etUsername, etPassword;
-    Button btnLogin, btnGoRegister;
-    DBHelper DB;
+    // Hardcoded admin credentials
+    private static final String ADMIN_USERNAME = "admin";
+    private static final String ADMIN_PASSWORD = "admin123";
 
-    @Override
+    private EditText etUsername, etPassword;
+    private Button btnLogin;
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.admin_login);
 
-        etUsername=findViewById(R.id.etUsername);
+        etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnLogin);
-        btnGoRegister = findViewById(R.id.btnGoRegister);
 
-        DB = new DBHelper(this); // initialize database
 
         btnLogin.setOnClickListener(v -> {
             String username = etUsername.getText().toString();
@@ -33,10 +34,10 @@ public class LoginActivity extends AppCompatActivity {
             if (username.equals("") || pass.equals("")) {
                 Toast.makeText(this, "Please enter all fields", Toast.LENGTH_SHORT).show();
             } else {
-                Boolean checkUserPass = DB.checkUsernamePassword(username, pass);
-                if (checkUserPass) {
+
+                if (username.equals("admin") && pass.equals("admin123")) {
                     Toast.makeText(this, "Login Successful!", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(this, MenuActivity.class));
+                    startActivity(new Intent(this, AdminActivity.class));
                     finish();
                 } else {
                     Toast.makeText(this, "Invalid Credentials!", Toast.LENGTH_SHORT).show();
@@ -44,8 +45,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        btnGoRegister.setOnClickListener(v -> {
-            startActivity(new Intent(this, RegisterActivity.class));
-        });
+
     }
+
 }

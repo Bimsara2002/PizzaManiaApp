@@ -18,7 +18,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase MyDB) {
         MyDB.execSQL("create table users(username TEXT primary key, password TEXT, mobile TEXT)");
 
-        //Create menu Table
+
         MyDB.execSQL("CREATE TABLE menu(" +
                 "item_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "name TEXT NOT NULL, " +
@@ -27,7 +27,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 "image_url TEXT, " +
                 "category TEXT)");
 
-        // Cart Table
+
         MyDB.execSQL("CREATE TABLE cart(" +
                 "cart_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "username TEXT, " +
@@ -36,7 +36,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 "FOREIGN KEY(username) REFERENCES users(username), " +
                 "FOREIGN KEY(item_id) REFERENCES menu(item_id))");
 
-        //Insert Data
+
         MyDB.execSQL("INSERT INTO menu (name, description, price, image_url, category) VALUES " +
                 "('Chicken Pizza', 'Spicy chicken with cheese', 1200, 'sample_pizza', 'Pizza')," +
                 "('Veggie Delight', 'Fresh vegetables and cheese', 950, 'veggie_pizza', 'Pizza')," +
@@ -88,7 +88,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return cursor.getCount() > 0;
     }
 
-    // Get Cart Items for a User
+
     public Cursor getCartItems(String username) {
         SQLiteDatabase db = this.getReadableDatabase();
         return db.rawQuery("SELECT c.cart_id, m.name, m.price, m.image_url, c.quantity " +
@@ -96,7 +96,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 "WHERE c.username = ?", new String[]{username});
     }
 
-    // Clear Cart
+
     public void clearCart(String username) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete("cart", "username=?", new String[]{username});
@@ -108,7 +108,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return cursor.getCount() > 0;
     }
 
-    // Get menu items by category
+
     public Cursor getMenuByCategory(String category) {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -117,5 +117,34 @@ public class DBHelper extends SQLiteOpenHelper {
         } else {
             return db.rawQuery("SELECT * FROM menu WHERE category = ?", new String[]{category});
         }
+    }
+    public boolean addProduct(String name, String description, double price, String imageUrl,String category) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("name", name);
+        values.put("description", description);
+        values.put("price", price);
+        values.put("image_url", imageUrl);
+        values.put("category",category);
+
+        long result = db.insert("menu", null, values);
+        return result != -1;
+    }
+
+    public boolean updateProduct(int id, String name, String description, double price, String imageUrl) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("name", name);
+        values.put("description", description);
+        values.put("price", price);
+        values.put("image_url", imageUrl);
+
+        int result = db.update("menu", values, "item_id=?", new String[]{String.valueOf(id)});
+        return result > 0;
+    }
+    public boolean deleteProduct(int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        int result = db.delete("menu", "item_id=?", new String[]{String.valueOf(id)});
+        return result > 0;
     }
 }

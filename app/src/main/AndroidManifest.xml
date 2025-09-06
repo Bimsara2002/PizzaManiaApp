@@ -13,15 +13,7 @@
         android:theme="@style/Theme.PizzaManiaApp">
 
         <activity
-            android:name=".ViewUsersActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".LoginActivity"
-            android:exported="true" />
-
-        <activity
-            android:name=".RegisterActivity"
+            android:name=".DashboardActivity"
             android:exported="true">
             <!-- Make RegisterActivity the launcher -->
             <intent-filter>
@@ -31,8 +23,40 @@
         </activity>
 
         <activity
+            android:name=".ViewUsersActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true" />
+
+        <activity
             android:name=".MainActivity"
             android:exported="false" />
+
+        <activity android:name=".RegisterActivity"
+            android:exported="true"/>
+
+        <activity android:name=".MenuActivity"
+            android:exported="true"/>
+
+        <activity android:name=".CartActivity"
+            android:exported="true"/>
+
+        <activity android:name=".AdminActivity"
+            android:exported="true"/>
+
+        <activity android:name=".AddProduct"
+            android:exported="true"/>
+
+        <activity android:name=".UpdateProduct"
+            android:exported="true"/>
+
+        <activity android:name=".DeleteProduct"
+            android:exported="true"/>
+
+        <activity android:name=".AdminLogin"
+            android:exported="true"/>
 
     </application>
 </manifest>

@@ -12,20 +12,23 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
+import java.io.File;
 import java.util.ArrayList;
 
 public class MenuAdaptor extends RecyclerView.Adapter<MenuAdaptor.MenuViewHolder> {
 
     private Context context;
-    private ArrayList<Integer> itemIds;      // menu item IDs
-    private ArrayList<String> foodNames;     // food names
-    private ArrayList<String> foodPrices;    // food prices
-    private ArrayList<Integer> foodImages;   // drawable resource IDs
-    private String username;                 // current logged in user
+    private ArrayList<Integer> itemIds;
+    private ArrayList<String> foodNames;
+    private ArrayList<String> foodPrices;
+    private ArrayList<String> foodImages;
+    private String username;
 
     public MenuAdaptor(Context context, ArrayList<Integer> itemIds,
                        ArrayList<String> foodNames, ArrayList<String> foodPrices,
-                       ArrayList<Integer> foodImages, String username) {
+                       ArrayList<String> foodImages, String username) {
         this.context = context;
         this.itemIds = itemIds;
         this.foodNames = foodNames;
@@ -45,9 +48,29 @@ public class MenuAdaptor extends RecyclerView.Adapter<MenuAdaptor.MenuViewHolder
     public void onBindViewHolder(@NonNull MenuViewHolder holder, int position) {
         holder.foodName.setText(foodNames.get(position));
         holder.foodPrice.setText("Rs. " + foodPrices.get(position));
-        holder.foodImage.setImageResource(foodImages.get(position));
 
-        // Add to Cart button logic
+        String imagePath = foodImages.get(position);
+
+        if (imagePath != null) {
+            File file = new File(imagePath);
+            if (file.exists()) {
+                Glide.with(context)
+                        .load(file) //loads copied file
+                        .placeholder(R.drawable.ic_placeholder)
+                        .into(holder.foodImage);
+            } else {
+                // fallback to drawable name
+                int resId = context.getResources().getIdentifier(imagePath, "drawable", context.getPackageName());
+                if (resId != 0) {
+                    Glide.with(context).load(resId).into(holder.foodImage);
+                } else {
+                    holder.foodImage.setImageResource(R.drawable.ic_placeholder);
+                }
+            }
+        }
+
+
+
         holder.addToCartBtn.setOnClickListener(v -> {
             DBHelper dbHelper = new DBHelper(context);
             int itemId = itemIds.get(position);  // get menu item ID from DB
