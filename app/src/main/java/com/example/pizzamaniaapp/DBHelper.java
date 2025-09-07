@@ -118,33 +118,4 @@ public class DBHelper extends SQLiteOpenHelper {
             return db.rawQuery("SELECT * FROM menu WHERE category = ?", new String[]{category});
         }
     }
-    public boolean addProduct(String name, String description, double price, String imageUrl,String category) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put("name", name);
-        values.put("description", description);
-        values.put("price", price);
-        values.put("image_url", imageUrl);
-        values.put("category",category);
-
-        long result = db.insert("menu", null, values);
-        return result != -1;
-    }
-
-    public boolean updateProduct(int id, String name, String description, double price, String imageUrl) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put("name", name);
-        values.put("description", description);
-        values.put("price", price);
-        values.put("image_url", imageUrl);
-
-        int result = db.update("menu", values, "item_id=?", new String[]{String.valueOf(id)});
-        return result > 0;
-    }
-    public boolean deleteProduct(int id) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        int result = db.delete("menu", "item_id=?", new String[]{String.valueOf(id)});
-        return result > 0;
-    }
 }

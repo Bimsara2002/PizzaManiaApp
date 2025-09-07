@@ -12,47 +12,48 @@
         android:gravity="center">
 
         <EditText
+            android:id="@+id/etId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Product ID"
+            android:inputType="number"
+            android:layout_marginBottom="16dp"/>
+
+        <EditText
             android:id="@+id/etName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Product Name"
-            android:layout_marginTop="8dp"/>
+            android:layout_marginBottom="16dp"/>
 
         <EditText
             android:id="@+id/etDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Description"
-            android:layout_marginTop="8dp"/>
+            android:layout_marginBottom="16dp"/>
 
         <EditText
             android:id="@+id/etPrice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="Price"
             android:inputType="numberDecimal"
-            android:layout_marginTop="8dp"/>
+            android:layout_marginBottom="16dp"/>
 
-        <Button
-            android:id="@+id/btnSelectImage"
+        <EditText
+            android:id="@+id/etImage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Select Image from Gallery"
-            android:layout_marginTop="16dp"/>
+            android:hint="Image URL"
+            android:layout_marginBottom="24dp"/>
 
-        <ImageView
-            android:id="@+id/ivPreview"
+        <Button
+            android:id="@+id/btnUpdate"
             android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_marginTop="16dp"
-            android:background="#EEEEEE"
-            android:scaleType="centerCrop"/>
-
-        <Button
-            android:id="@+id/btnAdd"
-            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add Product"
-            android:layout_marginTop="16dp"/>
+            android:text="Update Product"
+            android:backgroundTint="#F9A825"
+            android:textColor="#FFFFFF"/>
     </LinearLayout>
-
 </ScrollView>
