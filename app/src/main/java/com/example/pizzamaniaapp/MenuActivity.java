@@ -26,7 +26,7 @@ public class MenuActivity extends AppCompatActivity {
     ArrayList<Integer> itemIds;
     ArrayList<String> foodNames;
     ArrayList<String> foodPrices;
-    ArrayList<Integer> foodImages;
+    ArrayList<String> foodImages;
 
     String currentUser = "Pehsara"; // replace with logged-in username
 
@@ -81,12 +81,10 @@ public class MenuActivity extends AppCompatActivity {
             String price = cursor.getString(cursor.getColumnIndexOrThrow("price"));
             String imageName = cursor.getString(cursor.getColumnIndexOrThrow("image_url"));
 
-            int resId = getResources().getIdentifier(imageName, "drawable", getPackageName());
-
             itemIds.add(id);
             foodNames.add(name);
             foodPrices.add(price);
-            foodImages.add(resId);
+            foodImages.add(imageName);
         }
         cursor.close();
     }
@@ -106,12 +104,12 @@ public class MenuActivity extends AppCompatActivity {
             String price = cursor.getString(cursor.getColumnIndexOrThrow("price"));
             String imageName = cursor.getString(cursor.getColumnIndexOrThrow("image_url"));
 
-            int resId = getResources().getIdentifier(imageName, "drawable", getPackageName());
+
 
             itemIds.add(id);
             foodNames.add(name);
             foodPrices.add(price);
-            foodImages.add(resId);
+            foodImages.add(imageName);
         }
         cursor.close();
 
