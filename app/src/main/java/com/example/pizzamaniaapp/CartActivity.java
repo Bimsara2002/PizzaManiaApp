@@ -23,7 +23,7 @@ public class CartActivity extends AppCompatActivity {
     ArrayList<String> cartNames, cartPrices, cartQuantities;
     ArrayList<Integer> cartImages;
 
-    String currentUser = "Pehsara"; // replace with logged-in username
+    String currentUser = "Pehsara";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
