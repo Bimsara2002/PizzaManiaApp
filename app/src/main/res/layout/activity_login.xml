@@ -1,59 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login_pizzaimage"
-    tools:context=".MainActivity">
+    android:background="@drawable/login_pizza">
 
-    <!-- Your content inside a LinearLayout -->
-    <LinearLayout
+    <!-- Dark overlay -->
+    <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="20dp"
-        android:gravity="center">
+        android:background="#88000000" />
 
-        <EditText
-            android:id="@+id/etUsername"
+    <!-- Login Card -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="100dp"
+        android:elevation="10dp"
+        app:cardCornerRadius="20dp"
+        app:cardBackgroundColor="#22FFFFFF">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Username"
-            android:inputType="textPersonName"
-            android:layout_marginBottom="15dp"
-            android:background="@android:color/white"/>
+            android:orientation="vertical"
+            android:padding="24dp">
 
-        <EditText
-            android:id="@+id/etEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter Email"
-            android:inputType="textEmailAddress"
-            android:layout_marginTop="16dp"
-            android:background="@android:color/white"/>
+            <!-- Title -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Welcome Back!"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                android:textColor="#FF5722"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="24dp" />
 
-        <EditText
-            android:id="@+id/etPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:layout_marginBottom="20dp"
-            android:background="@android:color/white"/>
+            <!-- Username Box -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:background="@drawable/rounded_edittext_transparent"
+                android:gravity="center_vertical"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:layout_marginBottom="16dp">
 
-        <Button
-            android:id="@+id/btnLogin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Login"
-            android:layout_marginBottom="10dp"/>
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@android:drawable/ic_menu_myplaces"
+                    app:tint="#FF5722"
+                    android:layout_marginEnd="8dp" />
 
-        <Button
-            android:id="@+id/btnGoRegister"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Don't have an account? Register"/>
+                <EditText
+                    android:id="@+id/etUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Username"
+                    android:textColorHint="#AA000000"
+                    android:textColor="#FF000000"
+                    android:padding="8dp"
+                    android:textSize="22sp"
+                    android:background="@android:color/transparent"
+                    android:inputType="textPersonName" />
+            </LinearLayout>
 
-    </LinearLayout>
+            <!-- Password Box -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:background="@drawable/rounded_edittext_transparent"
+                android:gravity="center_vertical"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:layout_marginBottom="24dp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@android:drawable/ic_lock_lock"
+                    app:tint="#FF5722"
+                    android:layout_marginEnd="8dp" />
+
+                <EditText
+                    android:id="@+id/etPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Password"
+                    android:textColorHint="#AA000000"
+                    android:textColor="#FF000000"
+                    android:padding="8dp"
+                    android:textSize="22sp"
+                    android:background="@android:color/transparent"
+                    android:inputType="textPassword" />
+            </LinearLayout>
+
+            <!-- Login Button -->
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/rounded_button_orange"
+                android:text="Login"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:layout_marginBottom="5dp" />
+
+            <!-- Go to Register -->
+            <Button
+                android:id="@+id/btnGoRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="Don't have an account? Register"
+                android:textColor="#FF5722"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
 </RelativeLayout>

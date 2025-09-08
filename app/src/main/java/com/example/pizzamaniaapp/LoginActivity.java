@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
-    EditText etEmail, etPassword;
+    EditText etUsername, etPassword;
     Button btnLogin, btnGoRegister;
     DBHelper DB;
 
@@ -19,7 +19,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        etEmail = findViewById(R.id.etEmail);
+        etUsername=findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnLogin);
         btnGoRegister = findViewById(R.id.btnGoRegister);
@@ -27,16 +27,16 @@ public class LoginActivity extends AppCompatActivity {
         DB = new DBHelper(this); // initialize database
 
         btnLogin.setOnClickListener(v -> {
-            String email = etEmail.getText().toString();
+            String username = etUsername.getText().toString();
             String pass = etPassword.getText().toString();
 
-            if (email.equals("") || pass.equals("")) {
+            if (username.equals("") || pass.equals("")) {
                 Toast.makeText(this, "Please enter all fields", Toast.LENGTH_SHORT).show();
             } else {
-                Boolean checkUserPass = DB.checkUsernamePassword(email, pass);
+                Boolean checkUserPass = DB.checkUsernamePassword(username, pass);
                 if (checkUserPass) {
                     Toast.makeText(this, "Login Successful!", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(this, MainActivity.class));
+                    startActivity(new Intent(this, MenuActivity.class));
                     finish();
                 } else {
                     Toast.makeText(this, "Invalid Credentials!", Toast.LENGTH_SHORT).show();

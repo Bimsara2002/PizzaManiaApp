@@ -11,28 +11,53 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PizzaManiaApp">
-
         <activity
-            android:name=".ViewUsersActivity"
+            android:name=".BranchActivity"
             android:exported="false" />
-
         <activity
-            android:name=".LoginActivity"
-            android:exported="true" />
-
-        <activity
-            android:name=".RegisterActivity"
+            android:name=".DashboardActivity"
             android:exported="true">
+
             <!-- Make RegisterActivity the launcher -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity
+            android:name=".ViewUsersActivity"
+            android:exported="true" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
-
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MenuActivity"
+            android:exported="true" />
+        <activity
+            android:name=".CartActivity"
+            android:exported="true" />
+        <activity
+            android:name=".AdminActivity"
+            android:exported="true" />
+        <activity
+            android:name=".AddProduct"
+            android:exported="true" />
+        <activity
+            android:name=".UpdateProduct"
+            android:exported="true" />
+        <activity
+            android:name=".DeleteProduct"
+            android:exported="true" />
+        <activity
+            android:name=".AdminLogin"
+            android:exported="true" />
     </application>
+
 </manifest>
