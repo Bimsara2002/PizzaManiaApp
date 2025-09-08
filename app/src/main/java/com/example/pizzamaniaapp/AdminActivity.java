@@ -1,5 +1,6 @@
 package com.example.pizzamaniaapp;
 
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
@@ -8,18 +9,26 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.Button;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class AdminActivity extends AppCompatActivity {
 
-    Button btnAddProduct, btnUpdateProduct, btnDeleteProduct, btnViewUsers;
+    Button btnAddProduct, btnUpdateProduct, btnDeleteProduct, btnViewUsers,btnOrder;
+
     DBHelper dbHelper;  // <-- add this
 
     @SuppressLint("MissingInflatedId")
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
+
 
         dbHelper = new DBHelper(this); // <-- initialize the DBHelper
 
@@ -28,8 +37,15 @@ public class AdminActivity extends AppCompatActivity {
         btnUpdateProduct = findViewById(R.id.btnUpdateProduct);
         btnDeleteProduct = findViewById(R.id.btnDeleteProduct);
         btnViewUsers = findViewById(R.id.btnViewUsers);
+        btnOrder=findViewById(R.id.btnOrder);
+
 
         // Set click listeners
+
+        btnAddProduct = findViewById(R.id.btnAddProduct);
+        btnUpdateProduct = findViewById(R.id.btnUpdateProduct);
+        btnDeleteProduct = findViewById(R.id.btnDeleteProduct);
+
         btnAddProduct.setOnClickListener(v -> {
             startActivity(new Intent(AdminActivity.this, AddProduct.class));
         });
@@ -41,6 +57,7 @@ public class AdminActivity extends AppCompatActivity {
         btnDeleteProduct.setOnClickListener(v -> {
             startActivity(new Intent(AdminActivity.this, DeleteProduct.class));
         });
+
 
         // View registered users
         btnViewUsers.setOnClickListener(v -> {
@@ -63,5 +80,15 @@ public class AdminActivity extends AppCompatActivity {
                     .setPositiveButton("OK", null)
                     .show();
         });
+
+        btnOrder.setOnClickListener(v ->{
+            Intent intent=new Intent(AdminActivity.this,AdminOrdersActivity.class);
+            startActivity(intent);
+
+        });
     }
 }
+
+    }
+}
+

@@ -1,5 +1,6 @@
 package com.example.pizzamaniaapp;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.Button;
@@ -23,7 +24,13 @@ public class CartActivity extends AppCompatActivity {
     ArrayList<String> cartNames, cartPrices, cartQuantities;
     ArrayList<Integer> cartImages;
 
+
     String currentUser = "Pehsara"; // replace with logged-in username
+    double total = 0;
+
+=======
+    String currentUser = "Pehsara";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,15 +55,32 @@ public class CartActivity extends AppCompatActivity {
 
         checkoutBtn.setOnClickListener(v -> {
             DBHelper.clearCart(currentUser);
-            Toast.makeText(this, "Checkout complete! Order placed.", Toast.LENGTH_SHORT).show();
-            finish(); // close cart
+            if (total == 0) {
+                Toast.makeText(this, "Cart is empty!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            //Insert into Orders table
+            boolean success = DBHelper.insertOrder(currentUser, total, "Pending");
+
+            if (success) {
+                DBHelper.clearCart(currentUser);
+                Toast.makeText(this, "Checkout complete! Order placed.", Toast.LENGTH_SHORT).show();
+
+                // Go to OrderTrackingActivity
+                Intent intent = new Intent(CartActivity.this, OrderTrackingActivity.class);
+                startActivity(intent);
+                finish();
+            } else {
+                Toast.makeText(this, "Failed to place order.", Toast.LENGTH_SHORT).show();
+            }
         });
     }
 
     private void loadCartFromDB() {
         Cursor cursor = DBHelper.getCartItems(currentUser);
 
-        double total = 0;
+
 
         while (cursor.moveToNext()) {
             String name = cursor.getString(cursor.getColumnIndexOrThrow("name"));

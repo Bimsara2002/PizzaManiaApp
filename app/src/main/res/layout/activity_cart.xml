@@ -41,7 +41,7 @@
         android:id="@+id/checkoutBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Proceed to Checkout"
+        android:text="Place Order"
         android:backgroundTint="#388E3C"
         android:textColor="#FFFFFF"
         android:textSize="16sp"

@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     android:background="@drawable/adminloginback">
 
 
@@ -48,10 +49,17 @@
         android:orientation="vertical"
         android:padding="24dp">
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+
+
         <EditText
             android:id="@+id/etUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             android:layout_marginBottom="16dp"
             android:background="#80000000"
             android:hint="Username"
@@ -60,10 +68,14 @@
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF" />
 
+            android:hint="Username"
+
+
         <EditText
             android:id="@+id/etPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             android:layout_marginBottom="24dp"
             android:background="#80000000"
             android:hint="Password"
@@ -83,3 +95,12 @@
     </LinearLayout>
 
     </RelativeLayout>
+
+            android:hint="Password"
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_height="wrap_content"
+    </LinearLayout>
+</RelativeLayout>
+
