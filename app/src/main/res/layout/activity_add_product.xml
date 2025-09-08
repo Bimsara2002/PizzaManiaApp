@@ -3,8 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="24dp"
-    android:background="@drawable/adminactivity">
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,41 +15,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Product Name"
-            android:layout_marginTop="8dp"
-            android:textColor="#000000"
-            android:textColorHint="#FFFFFF"
-            android:padding="12dp"/>
 
         <EditText
             android:id="@+id/etDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Description"
-            android:layout_marginTop="8dp"
-            android:textColor="#000000"
-            android:textColorHint="#FFFFFF"
-            android:padding="12dp"/>
 
         <EditText
             android:id="@+id/etPrice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Price"
             android:inputType="numberDecimal"
-            android:layout_marginTop="8dp"
-            android:textColor="#000000"
-            android:textColorHint="#FFFFFF"
-            android:padding="12dp"/>
-
-        <EditText
-            android:id="@+id/etCategory"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Category"
-            android:layout_marginTop="8dp"
-            android:textColor="#000000"
-            android:textColorHint="#FFFFFF"
-            android:padding="12dp"/>
 
         <Button
             android:id="@+id/btnSelectImage"
@@ -60,33 +35,9 @@
             android:text="Select Image from Gallery"
             android:layout_marginTop="16dp"/>
 
-
-        <FrameLayout
-            android:layout_width="256dp"
-            android:layout_height="121dp"
-            android:layout_marginTop="16dp">
-
-            <!-- Image preview -->
             <ImageView
                 android:id="@+id/ivPreview"
-                android:layout_width="258dp"
-                android:layout_height="124dp"
-                android:background="#80FFFFFF"
-                android:contentDescription="Selected Image"
                 android:scaleType="centerCrop" />
-
-            <!-- Overlay text -->
-            <TextView
-                android:id="@+id/tvSelectImage"
-                android:layout_width="match_parent"
-                android:layout_height="123dp"
-                android:background="#30FFFFFF"
-                android:gravity="center"
-                android:text="Select Image from Gallery"
-                android:textColor="#000000"
-                android:textSize="16sp" />
-
-        </FrameLayout>
 
         <Button
             android:id="@+id/btnAdd"
