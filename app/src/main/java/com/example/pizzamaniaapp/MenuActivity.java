@@ -50,7 +50,7 @@ public class MenuActivity extends AppCompatActivity {
         menuRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
-        // load all items at first
+
         loadMenu("All");
 
         //hook up category buttons
@@ -97,7 +97,7 @@ public class MenuActivity extends AppCompatActivity {
         cursor.close();
     }
 
-    //Reusable method to load menu by category
+
     private void loadMenu(String category) {
         itemIds.clear();
         foodNames.clear();

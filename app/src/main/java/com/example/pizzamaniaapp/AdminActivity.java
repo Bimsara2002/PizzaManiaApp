@@ -1,5 +1,6 @@
 package com.example.pizzamaniaapp;
 
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
@@ -8,6 +9,11 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.Button;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class AdminActivity extends AppCompatActivity {
@@ -17,10 +23,12 @@ public class AdminActivity extends AppCompatActivity {
     DBHelper dbHelper;  // <-- add this
 
     @SuppressLint("MissingInflatedId")
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
+
 
         dbHelper = new DBHelper(this); // <-- initialize the DBHelper
 
@@ -33,6 +41,11 @@ public class AdminActivity extends AppCompatActivity {
 
 
         // Set click listeners
+
+        btnAddProduct = findViewById(R.id.btnAddProduct);
+        btnUpdateProduct = findViewById(R.id.btnUpdateProduct);
+        btnDeleteProduct = findViewById(R.id.btnDeleteProduct);
+
         btnAddProduct.setOnClickListener(v -> {
             startActivity(new Intent(AdminActivity.this, AddProduct.class));
         });
@@ -44,6 +57,7 @@ public class AdminActivity extends AppCompatActivity {
         btnDeleteProduct.setOnClickListener(v -> {
             startActivity(new Intent(AdminActivity.this, DeleteProduct.class));
         });
+
 
         // View registered users
         btnViewUsers.setOnClickListener(v -> {
@@ -74,3 +88,7 @@ public class AdminActivity extends AppCompatActivity {
         });
     }
 }
+
+    }
+}
+

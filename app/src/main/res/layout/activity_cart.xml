@@ -6,7 +6,7 @@
     android:padding="12dp"
     android:background="#FFFFFF">
 
-    <!-- Title -->
+
     <TextView
         android:id="@+id/cartTitle"
         android:layout_width="wrap_content"
@@ -17,14 +17,14 @@
         android:layout_gravity="center"
         android:padding="8dp"/>
 
-    <!-- RecyclerView for Cart Items -->
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/cartRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"/>
 
-    <!-- Total Price -->
+
     <TextView
         android:id="@+id/totalPrice"
         android:layout_width="match_parent"
@@ -36,7 +36,7 @@
         android:padding="12dp"
         android:textColor="#D32F2F"/>
 
-    <!-- Checkout Button -->
+
     <Button
         android:id="@+id/checkoutBtn"
         android:layout_width="match_parent"

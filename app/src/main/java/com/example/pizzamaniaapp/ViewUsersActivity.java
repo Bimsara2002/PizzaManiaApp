@@ -8,8 +8,8 @@ import android.widget.TextView;
 
 public class ViewUsersActivity extends AppCompatActivity {
 
-    DBHelper dbHelper;  // <-- Reference to your DB helper
-    TextView tvUsers;         // <-- To show results
+    DBHelper dbHelper;
+    TextView tvUsers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

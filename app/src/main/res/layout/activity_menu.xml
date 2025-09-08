@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#000000">
 
-    <!--App Logo -->
+
     <ImageView
         android:id="@+id/appLogo"
         android:layout_width="500px"
@@ -17,7 +17,7 @@
         android:layout_centerHorizontal="true"
         android:contentDescription="Pizza Mania Logo" />
 
-    <!--Search Bar -->
+
     <EditText
         android:id="@+id/searchBar"
         android:layout_width="match_parent"
@@ -30,7 +30,7 @@
         android:background="#000000"
         android:padding="10dp" />
 
-    <!-- Category Tabs -->
+
     <HorizontalScrollView
         android:id="@+id/categoryTabs"
         android:layout_width="match_parent"
@@ -86,7 +86,7 @@
         </LinearLayout>
     </HorizontalScrollView>
 
-    <!-- RecyclerView for Menu Items -->
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/menuRecyclerView"
         android:layout_width="match_parent"
@@ -94,7 +94,7 @@
         android:layout_below="@id/categoryTabs"
         android:paddingBottom="80dp" />
 
-    <!--Floating Cart Button -->
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/cartFab"
         android:layout_width="wrap_content"

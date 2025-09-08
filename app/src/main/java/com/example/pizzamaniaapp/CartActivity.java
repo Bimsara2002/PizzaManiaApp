@@ -24,8 +24,12 @@ public class CartActivity extends AppCompatActivity {
     ArrayList<String> cartNames, cartPrices, cartQuantities;
     ArrayList<Integer> cartImages;
 
+
     String currentUser = "Pehsara"; // replace with logged-in username
     double total = 0;
+
+=======
+    String currentUser = "Pehsara";
 
 
     @Override
