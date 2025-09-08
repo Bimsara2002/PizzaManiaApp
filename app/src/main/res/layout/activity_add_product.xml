@@ -4,6 +4,9 @@
     android:layout_height="match_parent"
     android:padding="24dp"
 
+    android:background="#FFFFFF">
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,17 +19,36 @@
             android:layout_height="wrap_content"
             android:hint="Product Name"
 
+            android:layout_marginTop="8dp"/>
+
+
         <EditText
             android:id="@+id/etDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Description"
 
+            android:layout_marginTop="8dp"/>
+
+
         <EditText
             android:id="@+id/etPrice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
+            android:hint="Price"
             android:inputType="numberDecimal"
+            android:layout_marginTop="8dp"/>
+
+        <EditText
+            android:id="@+id/etCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Category"
+            android:layout_marginTop="8dp"/>
+
+            android:inputType="numberDecimal"
+
 
         <Button
             android:id="@+id/btnSelectImage"
@@ -37,6 +59,12 @@
 
         <ImageView
             android:id="@+id/ivPreview"
+
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="16dp"
+            android:background="#EEEEEE"
+
             android:scaleType="centerCrop"/>
 
         <Button
@@ -46,4 +74,5 @@
             android:text="Add Product"
             android:layout_marginTop="16dp"/>
     </LinearLayout>
+
 </ScrollView>

@@ -6,12 +6,22 @@
     android:gravity="center"
     android:padding="24dp"
 
+    android:background="@drawable/adminactivity">
+
+
     <EditText
         android:id="@+id/etId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Product ID"
         android:inputType="number"
+
+        android:layout_marginBottom="16dp"
+        android:background="#80000000"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#CCCCCC"
+        android:padding="12dp"/>
+
 
     <Button
         android:id="@+id/btnDelete"

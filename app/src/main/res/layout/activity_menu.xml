@@ -76,6 +76,13 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="#e99934"
                 android:text="Sides"/>
+
+            <Button
+                android:id="@+id/viewOrderStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#e99934"
+                android:text="Order Status"/>
         </LinearLayout>
     </HorizontalScrollView>
 
