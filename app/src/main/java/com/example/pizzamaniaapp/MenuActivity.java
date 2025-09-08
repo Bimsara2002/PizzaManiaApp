@@ -26,7 +26,7 @@ public class MenuActivity extends AppCompatActivity {
     ArrayList<Integer> itemIds;
     ArrayList<String> foodNames;
     ArrayList<String> foodPrices;
-    ArrayList<Integer> foodImages;
+    ArrayList<String> foodImages;
 
     String currentUser = "Pehsara"; // replace with logged-in username
 
@@ -58,6 +58,9 @@ public class MenuActivity extends AppCompatActivity {
         Button pizzaBtn = findViewById(R.id.pizzaBtn);
         Button drinksBtn = findViewById(R.id.drinksBtn);
         Button sidesBtn = findViewById(R.id.sidesBtn);
+        Button orderStatusBtn=findViewById(R.id.viewOrderStatus);
+
+
 
         allBtn.setOnClickListener(v -> loadMenu("All"));
         pizzaBtn.setOnClickListener(v -> loadMenu("Pizza"));
@@ -68,6 +71,11 @@ public class MenuActivity extends AppCompatActivity {
         FloatingActionButton cartFab= findViewById(R.id.cartFab);
         cartFab.setOnClickListener(v->{
             Intent intent=new Intent(MenuActivity.this,CartActivity.class);
+            startActivity(intent);
+        });
+
+        orderStatusBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(MenuActivity.this, OrderTrackingActivity.class);
             startActivity(intent);
         });
     }
@@ -81,12 +89,10 @@ public class MenuActivity extends AppCompatActivity {
             String price = cursor.getString(cursor.getColumnIndexOrThrow("price"));
             String imageName = cursor.getString(cursor.getColumnIndexOrThrow("image_url"));
 
-            int resId = getResources().getIdentifier(imageName, "drawable", getPackageName());
-
             itemIds.add(id);
             foodNames.add(name);
             foodPrices.add(price);
-            foodImages.add(resId);
+            foodImages.add(imageName);
         }
         cursor.close();
     }
@@ -106,12 +112,12 @@ public class MenuActivity extends AppCompatActivity {
             String price = cursor.getString(cursor.getColumnIndexOrThrow("price"));
             String imageName = cursor.getString(cursor.getColumnIndexOrThrow("image_url"));
 
-            int resId = getResources().getIdentifier(imageName, "drawable", getPackageName());
+
 
             itemIds.add(id);
             foodNames.add(name);
             foodPrices.add(price);
-            foodImages.add(resId);
+            foodImages.add(imageName);
         }
         cursor.close();
 

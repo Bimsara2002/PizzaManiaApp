@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class AddProduct extends AppCompatActivity {
 
-    EditText etName, etDescription, etPrice;
+    EditText etName, etDescription, etPrice,etCategory;
     Button btnAdd, btnSelectImage;
     ImageView ivPreview;
     DBHelper DB;
@@ -53,6 +53,7 @@ public class AddProduct extends AppCompatActivity {
             String name = etName.getText().toString();
             String description = etDescription.getText().toString();
             String priceStr = etPrice.getText().toString();
+            String category=etCategory.getText().toString();
 
             if (name.isEmpty() || priceStr.isEmpty() || selectedImageUri == null) {
                 Toast.makeText(this, "Name, Price and Image are required", Toast.LENGTH_SHORT).show();
@@ -62,7 +63,7 @@ public class AddProduct extends AppCompatActivity {
             double price = Double.parseDouble(priceStr);
             String imageUriStr = selectedImageUri.toString(); // save URI as String
 
-            boolean success = DB.addProduct(name, description, price, imageUriStr);
+            boolean success = DB.addProduct(name, description, price, imageUriStr,category);
             if (success) {
                 Toast.makeText(this, "Product added successfully", Toast.LENGTH_SHORT).show();
                 finish();
