@@ -2,20 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:background="@drawable/welcomeadmin"
     android:gravity="center"
-
     android:orientation="vertical"
     android:padding="24dp">
 
     <Button
         android:id="@+id/btnAddProduct"
-
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
-
         android:baselineAligned="false"
         android:text="Add Product"
         android:textColor="#000000"
@@ -26,19 +22,15 @@
         android:layout_width="250dp"
         android:layout_height="60dp"
         android:layout_marginBottom="24dp"
-
         android:text="Update Product"
         android:textColor="#000000"
         android:textSize="20sp" />
-
-
 
     <Button
         android:id="@+id/btnDeleteProduct"
         android:layout_width="250dp"
         android:layout_height="60dp"
         android:text="Delete Product"
-
         android:textColor="#000000"
         android:textSize="20sp" />
 
@@ -59,17 +51,4 @@
         android:textColor="#000000"
         android:textSize="20sp"
         android:layout_marginTop="24dp"/>
-
-        android:layout_height="wrap_content"
-        android:text="Add Product"
-
-    <Button
-        android:id="@+id/btnUpdateProduct"
-        android:text="Update Product"
-
-    <Button
-        android:id="@+id/btnDeleteProduct"
-        android:text="Delete Product"
-
-
 </LinearLayout>

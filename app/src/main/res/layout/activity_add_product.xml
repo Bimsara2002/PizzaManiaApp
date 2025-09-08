@@ -47,9 +47,6 @@
             android:hint="Category"
             android:layout_marginTop="8dp"/>
 
-            android:inputType="numberDecimal"
-
-
         <Button
             android:id="@+id/btnSelectImage"
             android:layout_width="match_parent"

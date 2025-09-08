@@ -1,15 +1,15 @@
 package com.example.pizzamaniaapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 public class ViewUsersActivity extends AppCompatActivity {
 
-    DBHelper dbHelper;
-    TextView tvUsers;
+    DBHelper dbHelper;  // <-- Reference to your DB helper
+    TextView tvUsers;         // <-- To show results
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

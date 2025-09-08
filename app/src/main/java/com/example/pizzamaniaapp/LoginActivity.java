@@ -19,9 +19,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
-        etUsername = findViewById(R.id.etUsername);
-
         etUsername=findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnLogin);
@@ -30,15 +27,6 @@ public class LoginActivity extends AppCompatActivity {
         DB = new DBHelper(this); // initialize database
 
         btnLogin.setOnClickListener(v -> {
-
-            String userName = etUsername.getText().toString();
-            String pass = etPassword.getText().toString();
-
-            if (userName.equals("") || pass.equals("")) {
-                Toast.makeText(this, "Please enter all fields", Toast.LENGTH_SHORT).show();
-            } else {
-                Boolean checkUserPass = DB.checkUsernamePassword(userName, pass);
-
             String username = etUsername.getText().toString();
             String pass = etPassword.getText().toString();
 
@@ -46,7 +34,6 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(this, "Please enter all fields", Toast.LENGTH_SHORT).show();
             } else {
                 Boolean checkUserPass = DB.checkUsernamePassword(username, pass);
-
                 if (checkUserPass) {
                     Toast.makeText(this, "Login Successful!", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(this, MenuActivity.class));
