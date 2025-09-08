@@ -119,24 +119,4 @@
 
 </ScrollView>
 
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center"
-
-            <ImageView
-                android:id="@+id/imgLogo"
-
-        <!-- Admin Button -->
-            <Button
-                android:id="@+id/btnAdmin"
-                android:textColor="#FFFFFF"
-
-        <!-- Customer Button -->
-            <Button
-                android:id="@+id/btnCustomer"
-                android:textColor="#FFFFFF"
-
-    </LinearLayout>
 
