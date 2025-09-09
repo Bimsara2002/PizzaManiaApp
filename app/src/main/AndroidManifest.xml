@@ -24,10 +24,7 @@
 
         <activity
             android:name=".ViewUsersActivity"
-
             android:exported="true" />
-
-            android:exported="false" />
 
         <activity
             android:name=".LoginActivity"
@@ -65,6 +62,9 @@
             android:exported="true"/>
 
         <activity android:name=".AdminOrdersActivity"
+            android:exported="true"/>
+
+        <activity android:name=".BranchActivity"
             android:exported="true"/>
 
     </application>

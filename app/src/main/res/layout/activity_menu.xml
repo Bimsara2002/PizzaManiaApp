@@ -31,77 +31,83 @@
         android:paddingHorizontal="16dp"
         android:fontFamily="sans-serif" />
 
-    <!-- Category Buttons -->
-    <LinearLayout
+    <!-- Horizontal Scroll Category Buttons -->
+    <HorizontalScrollView
         android:id="@+id/categoryTabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/searchBar"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:padding="10dp"
-        android:weightSum="4">
+        android:scrollbars="none"
+        android:padding="8dp">
 
-        <Button
-            android:id="@+id/allBtn"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="🍴 All"
-            android:textColor="#FFFFFF"
-            android:background="@drawable/btn_category_selected"
-            android:layout_margin="4dp"/>
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/pizzaBtn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="🍕 Pizza"
-            android:textColor="#FFFFFF"
-            android:background="@drawable/btn_category"
-            android:layout_margin="4dp"/>
+            <Button
+                android:id="@+id/allBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🍴 All"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/btn_category_selected"
+                android:layout_margin="4dp"/>
 
-        <Button
-            android:id="@+id/drinksBtn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="🥤 Drinks"
-            android:textColor="#FFFFFF"
-            android:background="@drawable/btn_category"
-            android:layout_margin="4dp"/>
+            <Button
+                android:id="@+id/pizzaBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🍕 Pizza"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/btn_category"
+                android:layout_margin="4dp"/>
 
-        <Button
-            android:id="@+id/sidesBtn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="🍟 Sides"
-            android:textColor="#FFFFFF"
-            android:background="@drawable/btn_category"
-            android:layout_margin="4dp"/>
-    </LinearLayout>
+            <Button
+                android:id="@+id/drinksBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🥤 Drinks"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/btn_category"
+                android:layout_margin="4dp"/>
+
+            <Button
+                android:id="@+id/sidesBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🍟 Sides"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/btn_category"
+                android:layout_margin="4dp"/>
+
+            <Button
+                android:id="@+id/viewOrderStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📝 Order Status"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/btn_category"
+                android:layout_margin="4dp"/>
+        </LinearLayout>
+    </HorizontalScrollView>
 
     <!-- RecyclerView for Menu Items -->
-
-    <!-- Floating Order Status Button (Bottom Left) -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/menuRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/cartFab"
         android:layout_below="@id/categoryTabs"
-        android:layout_marginTop="-3dp"
+        android:layout_marginTop="4dp"
         android:layout_marginBottom="19dp"
         android:paddingBottom="150dp" />
 
-    <!-- Floating Cart Button (Bottom Right) -->
     <!-- Floating Order Status Button (Bottom Left) -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/orderStatusFab"
-        android:layout_width="85dp"
-        android:layout_height="85dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="20dp"
@@ -113,14 +119,13 @@
     <!-- Floating Cart Button (Bottom Right) -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/cartFab"
-        android:layout_width="85dp"
-        android:layout_height="85dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_margin="20dp"
         android:src="@drawable/ic_cart"
         app:backgroundTint="#FF1D00"
         app:tint="@android:color/white" />
-
 
 </RelativeLayout>
