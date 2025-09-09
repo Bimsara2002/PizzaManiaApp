@@ -241,5 +241,23 @@ public class DBHelper extends SQLiteOpenHelper {
         return result > 0;
     }
 
+    public boolean updateOrderLocation(int orderId, double latitude, double longitude) {
+    SQLiteDatabase db = this.getWritableDatabase();
+    ContentValues values = new ContentValues();
+    values.put("delivery_lat", latitude);
+    values.put("delivery_lng", longitude);
+    
+    int result = db.update("orders", values, "order_id=?", new String[]{String.valueOf(orderId)});
+    return result > 0;
+}
+
+
+    public Cursor getOrderLocation(int orderId) {
+    SQLiteDatabase db = this.getReadableDatabase();
+    return db.rawQuery("SELECT delivery_lat, delivery_lng FROM orders WHERE order_id=?", 
+                      new String[]{String.valueOf(orderId)});
+}
+
+
 
 }
