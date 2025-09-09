@@ -250,8 +250,13 @@ public class DBHelper extends SQLiteOpenHelper {
     int result = db.update("orders", values, "order_id=?", new String[]{String.valueOf(orderId)});
     return result > 0;
 }
-
-
-
-
+public Cursor getOrderLocation(int orderId) {
+    SQLiteDatabase db = this.getReadableDatabase();
+    return db.rawQuery("SELECT delivery_lat, delivery_lng FROM orders WHERE order_id=?", 
+     new String[]{String.valueOf(orderId)});
+}
+public Cursor getDeliveryOrders() {
+    SQLiteDatabase db = this.getReadableDatabase();
+    return db.rawQuery("SELECT * FROM orders WHERE status IN ('Preparing', 'Out for Delivery')", null);
+}
 }
