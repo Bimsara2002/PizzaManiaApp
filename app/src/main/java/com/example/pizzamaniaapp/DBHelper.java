@@ -46,13 +46,15 @@ public class DBHelper extends SQLiteOpenHelper {
                 "FOREIGN KEY(username) REFERENCES users(username))");
 
         // Order items
-        MyDB.execSQL("CREATE TABLE order_items(" +
-                "order_item_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "order_id INTEGER NOT NULL, " +
-                "item_id INTEGER NOT NULL, " +
-                "quantity INTEGER NOT NULL, " +
-                "FOREIGN KEY(order_id) REFERENCES orders(order_id), " +
-                "FOREIGN KEY(item_id) REFERENCES menu(item_id))");
+        MyDB.execSQL("CREATE TABLE orders(" +
+        "order_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+        "username TEXT, " +
+        "total_price REAL, " +
+        "status TEXT, " +
+        "order_time TEXT, " +
+        "delivery_lat REAL, " +  // NEW
+        "delivery_lng REAL)");   // NEW
+
 
         //Insert Data
         MyDB.execSQL("INSERT INTO menu (name, description, price, image_url, category) VALUES " +
