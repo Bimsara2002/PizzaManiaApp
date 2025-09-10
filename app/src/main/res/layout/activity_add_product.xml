@@ -14,7 +14,7 @@
             android:id="@+id/etName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Product Name"
+            android:hint="Product Name"/>
 
         <EditText
             android:id="@+id/etDescription"
