@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class DashboardActivity extends AppCompatActivity {
 
-    Button btnAdmin, btnCustomer;
+    Button btnAdmin, btnCustomer,btnLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +18,7 @@ public class DashboardActivity extends AppCompatActivity {
 
         btnAdmin = findViewById(R.id.btnAdmin);
         btnCustomer = findViewById(R.id.btnCustomer);
+        btnLocation=findViewById(R.id.btnLocation);
 
         btnAdmin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -30,6 +31,13 @@ public class DashboardActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(DashboardActivity.this, LoginActivity.class));
+            }
+        });
+
+        btnLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(DashboardActivity.this, BranchActivity.class));
             }
         });
     }

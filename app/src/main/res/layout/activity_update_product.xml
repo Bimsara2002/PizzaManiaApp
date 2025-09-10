@@ -2,11 +2,19 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/adminactivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:padding="24dp"
+            android:layout_centerInParent="true">
 
             <EditText
                 android:id="@+id/etId"
@@ -14,18 +22,33 @@
                 android:layout_height="wrap_content"
                 android:hint="Product ID"
                 android:inputType="number"
+                android:layout_marginBottom="16dp"
+                android:background="#80000000"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#CCCCCC"
+                android:padding="12dp"/>
 
             <EditText
                 android:id="@+id/etName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Product Name"
+                android:layout_marginBottom="16dp"
+                android:background="#80000000"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#CCCCCC"
+                android:padding="12dp"/>
 
             <EditText
                 android:id="@+id/etDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Description"
+                android:layout_marginBottom="16dp"
+                android:background="#80000000"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#CCCCCC"
+                android:padding="12dp"/>
 
             <EditText
                 android:id="@+id/etPrice"
@@ -33,12 +56,22 @@
                 android:layout_height="wrap_content"
                 android:hint="Price"
                 android:inputType="numberDecimal"
+                android:layout_marginBottom="16dp"
+                android:background="#80000000"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#CCCCCC"
+                android:padding="12dp"/>
 
             <EditText
                 android:id="@+id/etImage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Image URL"
+                android:layout_marginBottom="24dp"
+                android:background="#80000000"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#CCCCCC"
+                android:padding="12dp"/>
 
             <Button
                 android:id="@+id/btnUpdate"
@@ -48,4 +81,5 @@
                 android:backgroundTint="#F9A825"
                 android:textColor="#FFFFFF"/>
         </LinearLayout>
+    </RelativeLayout>
 </ScrollView>

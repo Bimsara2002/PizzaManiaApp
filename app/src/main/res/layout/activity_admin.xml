@@ -2,20 +2,57 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/admin_ui"
+    android:gravity="center"
     android:orientation="vertical"
     android:padding="24dp">
 
     <Button
         android:id="@+id/btnAddProduct"
-        android:layout_height="wrap_content"
-        android:text="Add Product"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="16dp"
+        android:text="➕ Add Product"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:background="@drawable/btn_admin"/>
 
     <Button
         android:id="@+id/btnUpdateProduct"
-        android:text="Update Product"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="16dp"
+        android:text="✏️ Update Product"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:background="@drawable/btn_admin"/>
 
     <Button
         android:id="@+id/btnDeleteProduct"
-        android:text="Delete Product"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="16dp"
+        android:text="🗑️ Delete Product"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:background="@drawable/btn_admin"/>
 
+    <Button
+        android:id="@+id/btnViewUsers"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="16dp"
+        android:text="👥 View Users"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:background="@drawable/btn_admin"/>
+
+    <Button
+        android:id="@+id/btnOrder"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:text="📦 Order Status"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:background="@drawable/btn_admin"/>
 </LinearLayout>

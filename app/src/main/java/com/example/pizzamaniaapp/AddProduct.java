@@ -23,7 +23,7 @@ public class AddProduct extends AppCompatActivity {
     ImageView ivPreview;
     DBHelper DB;
     Uri selectedImageUri;
-    String savedImagePath;
+    String savedImagePath; //will hold copied safe path
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +40,7 @@ public class AddProduct extends AppCompatActivity {
 
         DB = new DBHelper(this);
 
-
+        //Image picker launcher
         ActivityResultLauncher<Intent> imagePickerLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 result -> {
@@ -59,7 +59,7 @@ public class AddProduct extends AppCompatActivity {
             imagePickerLauncher.launch(intent);
         });
 
-
+        //Add Product button
         btnAdd.setOnClickListener(v -> {
             String name = etName.getText().toString();
             String description = etDescription.getText().toString();
@@ -85,7 +85,7 @@ public class AddProduct extends AppCompatActivity {
         });
     }
 
-
+    //Save selected gallery image to app's private storage
     private String copyImageToAppStorage(Uri uri) {
         try {
             InputStream inputStream = getContentResolver().openInputStream(uri);
@@ -101,7 +101,7 @@ public class AddProduct extends AppCompatActivity {
             inputStream.close();
             outputStream.close();
 
-            return file.getAbsolutePath();
+            return file.getAbsolutePath(); //return file path
         } catch (Exception e) {
             e.printStackTrace();
             return null;

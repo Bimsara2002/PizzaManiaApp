@@ -13,7 +13,7 @@
         android:orientation="horizontal"
         android:padding="10dp">
 
-
+        <!-- Food Image -->
         <ImageView
             android:id="@+id/foodImage"
             android:layout_width="74dp"
@@ -21,7 +21,7 @@
             android:scaleType="centerCrop"
             android:src="@drawable/sample_pizza" />
 
-
+        <!-- Food Details -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -1,61 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/register_pizzaimage">
 
+    <!-- Dark overlay to make text stand out on image -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#88000000" />
 
-    <LinearLayout
+    <!-- Registration Card -->
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="20dp"
-        android:gravity="center"
+        android:layout_margin="24dp"
+        android:elevation="10dp"
+        app:cardCornerRadius="20dp"
+        app:cardBackgroundColor="#22FFFFFF"
         android:layout_centerInParent="true">
 
-        <EditText
-            android:id="@+id/etUsername"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Username"
-            android:inputType="textPersonName"
-            android:layout_marginBottom="15dp"
-            android:padding="10dp"/>
+            android:orientation="vertical"
+            android:padding="24dp">
 
-        <EditText
-            android:id="@+id/etPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:layout_marginBottom="15dp"
-            android:background="@android:drawable/edit_text"
-            android:padding="10dp"/>
+            <!-- Title -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Create Account"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                android:textColor="#FF5722"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="24dp" />
 
-        <EditText
-            android:id="@+id/etMobile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Mobile Number"
-            android:inputType="phone"
-            android:layout_marginBottom="20dp"
-            android:background="@android:drawable/edit_text"
-            android:padding="10dp"/>
+            <!-- Username -->
+            <EditText
+                android:id="@+id/etUsername"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/rounded_edittext_transparent"
+                android:hint="Username"
+                android:textColorHint="#AA000000"
+                android:textColor="#FF000000"
+                android:gravity="center"
+                android:padding="14dp"
+                android:layout_marginBottom="16dp"
+                android:textSize="22sp" />
 
+            <!-- Password -->
+            <EditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/rounded_edittext_transparent"
+                android:hint="Password"
+                android:textColorHint="#AA000000"
+                android:textColor="#FF000000"
+                android:gravity="center"
+                android:padding="14dp"
+                android:layout_marginBottom="16dp"
+                android:textSize="22sp"
+                android:inputType="textPassword" />
 
+            <!-- Mobile -->
+            <EditText
+                android:id="@+id/etMobile"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/rounded_edittext_transparent"
+                android:hint="Mobile Number"
+                android:textColorHint="#AA000000"
+                android:textColor="#FF000000"
+                android:gravity="center"
+                android:padding="14dp"
+                android:layout_marginBottom="24dp"
+                android:textSize="22sp"
+                android:inputType="phone" />
 
-        <Button
-            android:id="@+id/btnRegister"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Register"
-            android:layout_marginBottom="10dp"/>
+            <!-- Register Button -->
+            <Button
+                android:id="@+id/btnRegister"
+                android:layout_width="match_parent"
+                android:layout_height="71dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/rounded_button_orange"
+                android:text="Register"
+                android:textColor="@android:color/white"
+                android:textSize="30sp"
+                android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/btnGoLogin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Already have an account? Login"/>
-    </LinearLayout>
+            <!-- Go to Login -->
+            <Button
+                android:id="@+id/btnGoLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="Already have an account? Login"
+                android:textColor="#FF5722"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginBottom="16dp" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
 </RelativeLayout>

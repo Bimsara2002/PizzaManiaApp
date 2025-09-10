@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+
+
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,16 +18,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PizzaManiaApp">
 
-        <activity
-            android:name=".ViewUsersActivity"
-            android:exported="false" />
+//need to make api and add the key
+        <meta-data
+    android:name="com.google.android.geo.API_KEY"
+    android:value="YOUR_GOOGLE_MAPS_API_KEY"/> 
 
         <activity
-            android:name=".LoginActivity"
-            android:exported="true" />
-
-        <activity
-            android:name=".RegisterActivity"
+            android:name=".DashboardActivity"
             android:exported="true">
             <!-- Make RegisterActivity the launcher -->
             <intent-filter>
@@ -31,8 +34,49 @@
         </activity>
 
         <activity
+            android:name=".ViewUsersActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true" />
+
+        <activity
             android:name=".MainActivity"
             android:exported="false" />
+
+        <activity android:name=".RegisterActivity"
+            android:exported="true"/>
+
+        <activity android:name=".MenuActivity"
+            android:exported="true"/>
+
+        <activity android:name=".CartActivity"
+            android:exported="true"/>
+
+        <activity android:name=".AdminActivity"
+            android:exported="true"/>
+
+        <activity android:name=".AddProduct"
+            android:exported="true"/>
+
+        <activity android:name=".UpdateProduct"
+            android:exported="true"/>
+
+        <activity android:name=".DeleteProduct"
+            android:exported="true"/>
+
+        <activity android:name=".AdminLogin"
+            android:exported="true"/>
+
+        <activity android:name=".OrderTrackingActivity"
+            android:exported="true"/>
+
+        <activity android:name=".AdminOrdersActivity"
+            android:exported="true"/>
+
+        <activity android:name=".BranchActivity"
+            android:exported="true"/>
 
     </application>
 </manifest>

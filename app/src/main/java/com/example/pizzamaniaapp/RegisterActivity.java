@@ -1,13 +1,11 @@
 package com.example.pizzamaniaapp;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -30,7 +28,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         DB = new DBHelper(this);
 
-
+        // Register user
         btnRegister.setOnClickListener(v -> {
             String user = etUsername.getText().toString();
             String pass = etPassword.getText().toString();
@@ -56,7 +54,7 @@ public class RegisterActivity extends AppCompatActivity {
 
 
 
-
+        // Go to Login screen
         btnGoLogin.setOnClickListener(v -> {
             startActivity(new Intent(getApplicationContext(), LoginActivity.class));
         });
