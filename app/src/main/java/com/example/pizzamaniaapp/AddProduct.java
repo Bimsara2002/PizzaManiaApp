@@ -98,6 +98,7 @@ public class AddProduct extends AppCompatActivity {
             imagePickerLauncher.launch(intent);
         });
     }
+
     //Save selected gallery image to app's private storage
     private String copyImageToAppStorage(Uri uri) {
         try {
