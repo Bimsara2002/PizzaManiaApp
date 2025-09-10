@@ -96,6 +96,17 @@
         android:backgroundTint="#FF9800"
         android:textColor="@android:color/white"/>
 
+    <Button
+        android:id="@+id/manageAccountBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/viewOrderStatus"
+        android:layout_margin="10dp"
+        android:text="👤 Manage Account"
+        android:textSize="16sp"
+        android:backgroundTint="#1E88E5"
+        android:textColor="@android:color/white"/>
+
 
     <!-- RecyclerView for Menu Items -->
     <androidx.recyclerview.widget.RecyclerView
@@ -103,8 +114,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/cartFab"
-        android:layout_below="@id/categoryTabs"
+        android:layout_below="@id/manageAccountBtn"
         android:paddingBottom="150dp" />
+
 
     <!-- Floating Order Status Button (Bottom Left) -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton

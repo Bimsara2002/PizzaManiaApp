@@ -2,8 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:ignore="ExtraText">
-package="com.example.pizzamaniaapp">
+
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,6 +14,7 @@ package="com.example.pizzamaniaapp">
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PizzaManiaApp">
+
         <activity
             android:name=".Customer_Checkout_Activity"
             android:exported="false" />
@@ -27,6 +29,9 @@ package="com.example.pizzamaniaapp">
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".CustomerManageAccount" android:exported="true"/>
+
+
         <activity
             android:name=".ViewUsersActivity"
             android:exported="true" />

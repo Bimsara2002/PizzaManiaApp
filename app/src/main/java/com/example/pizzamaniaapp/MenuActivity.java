@@ -16,18 +16,14 @@ import java.util.ArrayList;
 
 public class MenuActivity extends AppCompatActivity {
 
-
     RecyclerView menuRecyclerView;
     @SuppressLint("RestrictedApi")
     MenuAdaptor adapter;
     DBHelper dbHelper;
-
-
     ArrayList<Integer> itemIds;
     ArrayList<String> foodNames;
     ArrayList<String> foodPrices;
     ArrayList<String> foodImages;
-
     String currentUser = "Pehsara"; // replace with logged-in username
 
     @Override
@@ -35,42 +31,42 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
+        // Initialize views
         menuRecyclerView = findViewById(R.id.menuRecyclerView);
         dbHelper = new DBHelper(this);
-
         itemIds = new ArrayList<>();
         foodNames = new ArrayList<>();
         foodPrices = new ArrayList<>();
         foodImages = new ArrayList<>();
 
+        // Load all menu items
         loadMenuFromDB();
 
+        // Set up adapter
         adapter = new MenuAdaptor(this, itemIds, foodNames, foodPrices, foodImages, currentUser);
         menuRecyclerView.setAdapter(adapter);
         menuRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-
-        // load all items at first
+        // Load all items initially
         loadMenu("All");
 
-        //hook up category buttons
+        // Initialize buttons
         Button allBtn = findViewById(R.id.allBtn);
         Button pizzaBtn = findViewById(R.id.pizzaBtn);
         Button drinksBtn = findViewById(R.id.drinksBtn);
         Button sidesBtn = findViewById(R.id.sidesBtn);
-        Button orderStatusBtn=findViewById(R.id.viewOrderStatus);
+        Button orderStatusBtn = findViewById(R.id.viewOrderStatus);
+        Button manageAccountBtn = findViewById(R.id.manageAccountBtn);
+        FloatingActionButton cartFab = findViewById(R.id.cartFab);
 
-
-
+        // Button click listeners
         allBtn.setOnClickListener(v -> loadMenu("All"));
         pizzaBtn.setOnClickListener(v -> loadMenu("Pizza"));
         drinksBtn.setOnClickListener(v -> loadMenu("Drinks"));
         sidesBtn.setOnClickListener(v -> loadMenu("Sides"));
 
-
-        FloatingActionButton cartFab= findViewById(R.id.cartFab);
-        cartFab.setOnClickListener(v->{
-            Intent intent=new Intent(MenuActivity.this,CartActivity.class);
+        cartFab.setOnClickListener(v -> {
+            Intent intent = new Intent(MenuActivity.this, CartActivity.class);
             startActivity(intent);
         });
 
@@ -78,11 +74,16 @@ public class MenuActivity extends AppCompatActivity {
             Intent intent = new Intent(MenuActivity.this, OrderTrackingActivity.class);
             startActivity(intent);
         });
+
+        manageAccountBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(MenuActivity.this, CustomerManageAccount.class);
+            startActivity(intent);
+        });
     }
 
+    // Load all menu items from DB
     private void loadMenuFromDB() {
         Cursor cursor = dbHelper.getAllMenuItems();
-
         while (cursor.moveToNext()) {
             int id = cursor.getInt(cursor.getColumnIndexOrThrow("item_id"));
             String name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
@@ -97,7 +98,7 @@ public class MenuActivity extends AppCompatActivity {
         cursor.close();
     }
 
-    //Reusable method to load menu by category
+    // Reusable method to load menu by category
     private void loadMenu(String category) {
         itemIds.clear();
         foodNames.clear();
@@ -105,14 +106,11 @@ public class MenuActivity extends AppCompatActivity {
         foodImages.clear();
 
         Cursor cursor = dbHelper.getMenuByCategory(category);
-
         while (cursor.moveToNext()) {
             int id = cursor.getInt(cursor.getColumnIndexOrThrow("item_id"));
             String name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
             String price = cursor.getString(cursor.getColumnIndexOrThrow("price"));
             String imageName = cursor.getString(cursor.getColumnIndexOrThrow("image_url"));
-
-
 
             itemIds.add(id);
             foodNames.add(name);

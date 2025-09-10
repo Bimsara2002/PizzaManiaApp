@@ -81,6 +81,25 @@ public class DBHelper extends SQLiteOpenHelper {
         long result = MyDB.insert("users", null, values);
         return result != -1;
     }
+    //  Update user account
+    public boolean updateUser(String username, String email, String password, String mobile) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("email", email);
+        values.put("password", password);
+        values.put("mobile", mobile);
+
+        int result = db.update("Users", values, "username=?", new String[]{username});
+        return result > 0;
+    }
+
+    //  Delete user account
+    public boolean deleteUser(String username) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        int result = db.delete("Users", "username=?", new String[]{username});
+        return result > 0;
+    }
+
 
     public boolean addToCart(String username, int itemId, int quantity) {
         SQLiteDatabase db = this.getWritableDatabase();
