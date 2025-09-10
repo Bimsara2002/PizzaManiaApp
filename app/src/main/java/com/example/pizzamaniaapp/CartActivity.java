@@ -63,8 +63,9 @@ public class CartActivity extends AppCompatActivity {
                 DBHelper.clearCart(currentUser);
                 Toast.makeText(this, "Checkout complete! Order placed.", Toast.LENGTH_SHORT).show();
 
-                // Go to OrderTrackingActivity
-                Intent intent = new Intent(CartActivity.this, OrderTrackingActivity.class);
+
+                Intent intent = new Intent(CartActivity.this, Customer_Checkout_Activity.class);
+                intent.putExtra("TOTAL_AMOUNT", total);
                 startActivity(intent);
                 finish();
             } else {

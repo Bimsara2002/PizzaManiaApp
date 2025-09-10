@@ -4,7 +4,7 @@
     android:id="@+id/menu_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_gradient">
+    android:background="@color/black">
 
     <!-- App Logo -->
     <ImageView
@@ -31,6 +31,7 @@
         android:paddingHorizontal="16dp"
         android:fontFamily="sans-serif" />
 
+    <!-- Category Buttons -->
     <!-- Category Buttons -->
     <LinearLayout
         android:id="@+id/categoryTabs"
@@ -83,25 +84,33 @@
             android:layout_margin="4dp"/>
     </LinearLayout>
 
-    <!-- RecyclerView for Menu Items -->
+    <!-- View Order Status Button -->
+    <Button
+        android:id="@+id/viewOrderStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/categoryTabs"
+        android:layout_margin="10dp"
+        android:text="📦 View Order Status"
+        android:textSize="16sp"
+        android:backgroundTint="#FF9800"
+        android:textColor="@android:color/white"/>
 
-    <!-- Floating Order Status Button (Bottom Left) -->
+
+    <!-- RecyclerView for Menu Items -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/menuRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/cartFab"
         android:layout_below="@id/categoryTabs"
-        android:layout_marginTop="-3dp"
-        android:layout_marginBottom="19dp"
         android:paddingBottom="150dp" />
 
-    <!-- Floating Cart Button (Bottom Right) -->
     <!-- Floating Order Status Button (Bottom Left) -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/orderStatusFab"
-        android:layout_width="85dp"
-        android:layout_height="85dp"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="20dp"
@@ -113,8 +122,8 @@
     <!-- Floating Cart Button (Bottom Right) -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/cartFab"
-        android:layout_width="85dp"
-        android:layout_height="85dp"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_margin="20dp"
@@ -122,5 +131,6 @@
         app:backgroundTint="#FF1D00"
         app:tint="@android:color/white" />
 
+    <!-- Floating View Order Status Button (Bottom Left, next to Cart) -->
 
 </RelativeLayout>
