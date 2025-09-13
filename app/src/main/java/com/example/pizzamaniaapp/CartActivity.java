@@ -49,34 +49,42 @@ public class CartActivity extends AppCompatActivity {
         cartRecyclerView.setAdapter(adapter);
         cartRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        //Update by Dilshan
         checkoutBtn.setOnClickListener(v -> {
-            DBHelper.clearCart(currentUser);
-            if (total == 0) {
-                Toast.makeText(this, "Cart is empty!", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-            //Insert into Orders table
-            boolean success = DBHelper.insertOrder(currentUser, total, "Pending");
-
-            if (success) {
-                DBHelper.clearCart(currentUser);
-                Toast.makeText(this, "Checkout complete! Order placed.", Toast.LENGTH_SHORT).show();
-
-                // Go to OrderTrackingActivity
-                Intent intent = new Intent(CartActivity.this, OrderTrackingActivity.class);
-                startActivity(intent);
-                finish();
-            } else {
-                Toast.makeText(this, "Failed to place order.", Toast.LENGTH_SHORT).show();
-            }
-        });
+    if (total == 0) {
+        Toast.makeText(this, "Cart is empty!", Toast.LENGTH_SHORT).show();
+        return;
     }
+
+    // Insert into Orders table
+    boolean success = DBHelper.insertOrder(currentUser, total, "Pending");
+
+    if (success) {
+        // Get the latest order ID (you might need to modify DBHelper to return the inserted ID)
+        Cursor cursor = DBHelper.getOrdersByUser(currentUser);
+        int orderId = -1;
+        if (cursor.moveToFirst()) {
+            orderId = cursor.getInt(cursor.getColumnIndexOrThrow("order_id"));
+        }
+        cursor.close();
+
+        DBHelper.clearCart(currentUser);
+        
+        // Launch location picker
+        Intent locationIntent = new Intent(this, LocationPickerActivity.class);
+        locationIntent.putExtra("ORDER_ID", orderId);
+        startActivity(locationIntent);
+        
+        Toast.makeText(this, "Checkout complete! Please select delivery location.", Toast.LENGTH_SHORT).show();
+    } else {
+        Toast.makeText(this, "Failed to place order.", Toast.LENGTH_SHORT).show();
+    }
+});
+
+}
 
     private void loadCartFromDB() {
         Cursor cursor = DBHelper.getCartItems(currentUser);
-
-
 
         while (cursor.moveToNext()) {
             String name = cursor.getString(cursor.getColumnIndexOrThrow("name"));

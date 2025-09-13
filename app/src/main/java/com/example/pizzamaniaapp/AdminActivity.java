@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import main.java.com.example.pizzamaniaapp.DeliveryMapActivity;
 
 public class AdminActivity extends AppCompatActivity {
 
@@ -30,6 +31,7 @@ public class AdminActivity extends AppCompatActivity {
         btnDeleteProduct = findViewById(R.id.btnDeleteProduct);
         btnViewUsers = findViewById(R.id.btnViewUsers);
         btnOrder=findViewById(R.id.btnOrder);
+        btnDeliveryMap = findViewById(R.id.btnDeliveryMap);
 
 
         // Set click listeners
@@ -44,6 +46,12 @@ public class AdminActivity extends AppCompatActivity {
         btnDeleteProduct.setOnClickListener(v -> {
             startActivity(new Intent(AdminActivity.this, DeleteProduct.class));
         });
+
+        btnDeliveryMap.setOnClickListener(v -> {
+    startActivity(new Intent(AdminActivity.this, DeliveryMapActivity.class));
+});
+
+
 
         // View registered users
         btnViewUsers.setOnClickListener(v -> {

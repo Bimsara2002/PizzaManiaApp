@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="#1A1A2E">
 
     <!-- Background -->
     <ImageView
@@ -58,7 +66,88 @@
             android:textColor="#FFFFFF"
             android:textSize="24sp"
             android:textStyle="bold"
+
             android:layout_marginTop="20dp" />
+
+            android:layout_marginBottom="8dp"
+            android:fontFamily="sans-serif-medium" />
+
+        <!-- Subtitle -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Choose Your Role"
+            android:textSize="16sp"
+            android:textColor="#B0BEC5"
+            android:layout_marginBottom="48dp" />
+
+        <!-- Admin Button -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp"
+            app:cardBackgroundColor="#1E88E5">
+
+            <Button
+                android:id="@+id/btnAdmin"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:text="👨‍💼 Admin"
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:background="@android:color/transparent"
+                android:letterSpacing="0.1"
+                android:fontFamily="sans-serif-medium" />
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Customer Button -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp"
+            app:cardBackgroundColor="#43A047">
+
+            <Button
+                android:id="@+id/btnCustomer"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:text="👤 Customer"
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:background="@android:color/transparent"
+                android:letterSpacing="0.1"
+                android:fontFamily="sans-serif-medium" />
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Location Button -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp"
+            app:cardBackgroundColor="#F57C00">
+
+            <Button
+                android:id="@+id/btnLocation"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:text="🌍 Location"
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:background="@android:color/transparent"
+                android:letterSpacing="0.1"
+                android:fontFamily="sans-serif-medium" />
+
+        </androidx.cardview.widget.CardView>
 
         <!-- Spacer -->
         <View
@@ -139,6 +228,7 @@
         </LinearLayout>
     </LinearLayout>
 
+
     <!-- Toggle Button -->
     <ImageButton
         android:id="@+id/toggleAdminButton"
@@ -152,3 +242,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
+

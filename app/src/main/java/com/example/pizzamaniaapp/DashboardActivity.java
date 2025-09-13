@@ -10,20 +10,29 @@ import androidx.cardview.widget.CardView;
 
 public class DashboardActivity extends AppCompatActivity {
 
+
     CardView adminCard, customerCard;
     ImageButton toggleAdminButton;
 
     boolean isAdminVisible = false; // track visibility state
+  
+    Button btnAdmin, btnCustomer,btnLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
+
         // Link XML views
         adminCard = findViewById(R.id.adminCard);
         customerCard = findViewById(R.id.customerCard);
         toggleAdminButton = findViewById(R.id.toggleAdminButton);
+      
+        btnAdmin = findViewById(R.id.btnAdmin);
+        btnCustomer = findViewById(R.id.btnCustomer);
+        btnLocation=findViewById(R.id.btnLocation);
+      
 
         // Start with admin hidden
         adminCard.setVisibility(View.GONE);
@@ -57,6 +66,7 @@ public class DashboardActivity extends AppCompatActivity {
             }
         });
 
+
         // Admin card click → AdminLogin
         adminCard.setOnClickListener(v ->
                 startActivity(new Intent(DashboardActivity.this, AdminLogin.class)));
@@ -64,5 +74,13 @@ public class DashboardActivity extends AppCompatActivity {
         // Customer card click → LoginActivity
         customerCard.setOnClickListener(v ->
                 startActivity(new Intent(DashboardActivity.this, LoginActivity.class)));
+
+        btnLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(DashboardActivity.this, BranchActivity.class));
+            }
+        });
+
     }
 }

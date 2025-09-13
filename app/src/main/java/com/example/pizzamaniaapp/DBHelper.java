@@ -46,13 +46,15 @@ public class DBHelper extends SQLiteOpenHelper {
                 "FOREIGN KEY(username) REFERENCES users(username))");
 
         // Order items
-        MyDB.execSQL("CREATE TABLE order_items(" +
-                "order_item_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "order_id INTEGER NOT NULL, " +
-                "item_id INTEGER NOT NULL, " +
-                "quantity INTEGER NOT NULL, " +
-                "FOREIGN KEY(order_id) REFERENCES orders(order_id), " +
-                "FOREIGN KEY(item_id) REFERENCES menu(item_id))");
+        MyDB.execSQL("CREATE TABLE orders(" +
+        "order_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+        "username TEXT, " +
+        "total_price REAL, " +
+        "status TEXT, " +
+        "order_time TEXT, " +
+        "delivery_lat REAL, " +  // NEW
+        "delivery_lng REAL)");   // NEW
+
 
         //Insert Data
         MyDB.execSQL("INSERT INTO menu (name, description, price, image_url, category) VALUES " +
@@ -241,5 +243,22 @@ public class DBHelper extends SQLiteOpenHelper {
         return result > 0;
     }
 
-
+    public boolean updateOrderLocation(int orderId, double latitude, double longitude) {
+    SQLiteDatabase db = this.getWritableDatabase();
+    ContentValues values = new ContentValues();
+    values.put("delivery_lat", latitude);
+    values.put("delivery_lng", longitude);
+    
+    int result = db.update("orders", values, "order_id=?", new String[]{String.valueOf(orderId)});
+    return result > 0;
+}
+public Cursor getOrderLocation(int orderId) {
+    SQLiteDatabase db = this.getReadableDatabase();
+    return db.rawQuery("SELECT delivery_lat, delivery_lng FROM orders WHERE order_id=?", 
+     new String[]{String.valueOf(orderId)});
+}
+public Cursor getDeliveryOrders() {
+    SQLiteDatabase db = this.getReadableDatabase();
+    return db.rawQuery("SELECT * FROM orders WHERE status IN ('Preparing', 'Out for Delivery')", null);
+}
 }
