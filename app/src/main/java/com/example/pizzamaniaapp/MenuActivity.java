@@ -58,7 +58,6 @@ public class MenuActivity extends AppCompatActivity {
         Button pizzaBtn = findViewById(R.id.pizzaBtn);
         Button drinksBtn = findViewById(R.id.drinksBtn);
         Button sidesBtn = findViewById(R.id.sidesBtn);
-        Button orderStatusBtn=findViewById(R.id.viewOrderStatus);
 
 
 
@@ -74,7 +73,8 @@ public class MenuActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        orderStatusBtn.setOnClickListener(v -> {
+        FloatingActionButton orderStatusFab = findViewById(R.id.orderStatusFab);
+        orderStatusFab.setOnClickListener(v -> {
             Intent intent = new Intent(MenuActivity.this, OrderTrackingActivity.class);
             startActivity(intent);
         });

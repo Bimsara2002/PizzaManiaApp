@@ -22,7 +22,7 @@ public class LoginActivity extends AppCompatActivity {
         etUsername=findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnLogin);
-        btnGoRegister = findViewById(R.id.btnGoRegister);
+        btnGoRegister = findViewById(R.id.btnSignUp);
 
         DB = new DBHelper(this); // initialize database
 
