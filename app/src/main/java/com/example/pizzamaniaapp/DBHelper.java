@@ -16,7 +16,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase MyDB) {
-        MyDB.execSQL("create table users(username TEXT primary key, password TEXT, mobile TEXT,address TEXT)");
+        MyDB.execSQL("create table users(username TEXT primary key, password TEXT, mobile TEXT)");
 
         //Create menu Table
         MyDB.execSQL("CREATE TABLE menu(" +
@@ -25,8 +25,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 "description TEXT, " +
                 "price REAL NOT NULL, " +
                 "image_url TEXT, " +
-                "category TEXT, " +
-                "branch TEXT)");
+                "category TEXT)");
 
         // Cart Table
         MyDB.execSQL("CREATE TABLE cart(" +
@@ -47,19 +46,22 @@ public class DBHelper extends SQLiteOpenHelper {
                 "FOREIGN KEY(username) REFERENCES users(username))");
 
         // Order items
-        MyDB.execSQL("CREATE TABLE order_items(" +
-                "order_item_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "order_id INTEGER NOT NULL, " +
-                "item_id INTEGER NOT NULL, " +
-                "quantity INTEGER NOT NULL, " +
-                "FOREIGN KEY(order_id) REFERENCES orders(order_id), " +
-                "FOREIGN KEY(item_id) REFERENCES menu(item_id))");
+        MyDB.execSQL("CREATE TABLE orders(" +
+        "order_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+        "username TEXT, " +
+        "total_price REAL, " +
+        "status TEXT, " +
+        "order_time TEXT, " +
+        "delivery_lat REAL, " +  // NEW
+        "delivery_lng REAL)");   // NEW
+
 
         //Insert Data
-        MyDB.execSQL("INSERT INTO menu (name, description, price, image_url, category, branch) VALUES " +
-                "('Chicken Pizza', 'Spicy chicken with cheese', 1200, 'chiken_pizza', 'Pizza','Colombo')," +
-                "('Veggie Delight', 'Fresh vegetables and cheese', 950, 'veggie_pizza', 'Pizza','Galle')," +
-                "('Coca-Cola 1L', 'Chilled soft drink', 350, 'coke', 'Drinks','Colombo')");
+        MyDB.execSQL("INSERT INTO menu (name, description, price, image_url, category) VALUES " +
+                "('Chicken Pizza', 'Spicy chicken with cheese', 1200, 'sample_pizza', 'Pizza')," +
+                "('Veggie Delight', 'Fresh vegetables and cheese', 950, 'veggie_pizza', 'Pizza')," +
+                "('Coca-Cola 1L', 'Chilled soft drink', 350, 'coke', 'Drinks')");
+
     }
 
     @Override
@@ -72,13 +74,12 @@ public class DBHelper extends SQLiteOpenHelper {
         onCreate(MyDB);
     }
        //Insert User
-    public Boolean insertData(String username, String password, String mobile,String address) {
+    public Boolean insertData(String username, String password, String mobile) {
         SQLiteDatabase MyDB = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("username", username);
         values.put("password", password);
         values.put("mobile", mobile);
-        values.put("address",address);
         long result = MyDB.insert("users", null, values);
         return result != -1;
     }
@@ -122,12 +123,6 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete("cart", "username=?", new String[]{username});
     }
-    // get User Details
-    public Cursor getUserDetails(String username) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        return db.rawQuery("SELECT address, password, mobile FROM users WHERE username = ?", new String[]{username});
-    }
-
 
     public Boolean checkUsernamePassword(String username, String password) {
         SQLiteDatabase MyDB = this.getReadableDatabase();
@@ -145,7 +140,7 @@ public class DBHelper extends SQLiteOpenHelper {
             return db.rawQuery("SELECT * FROM menu WHERE category = ?", new String[]{category});
         }
     }
-    public boolean addProduct(String name, String description, double price, String imageUrl,String category,String branch) {
+    public boolean addProduct(String name, String description, double price, String imageUrl,String category) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("name", name);
@@ -153,7 +148,6 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put("price", price);
         values.put("image_url", imageUrl);
         values.put("category",category);
-        values.put("branch", branch);
 
         long result = db.insert("menu", null, values);
         return result != -1;
@@ -175,11 +169,6 @@ public class DBHelper extends SQLiteOpenHelper {
         int result = db.delete("menu", "item_id=?", new String[]{String.valueOf(id)});
         return result > 0;
     }
-    public Cursor searchMenu(String keyword) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        return db.rawQuery("SELECT * FROM menu WHERE name LIKE ?", new String[]{"%" + keyword + "%"});
-    }
-
 
     /*
     //create order
@@ -254,35 +243,22 @@ public class DBHelper extends SQLiteOpenHelper {
         return result > 0;
     }
 
-//     Get menu items by category + branch
-//    public Cursor getMenuByCategoryAndBranch(String category, String branch) {
-//        SQLiteDatabase db = this.getReadableDatabase();
-//
-//        if (category.equals("All")) {
-//            return db.rawQuery("SELECT * FROM menu WHERE branch=?", new String[]{branch});
-//        } else {
-//            return db.rawQuery("SELECT * FROM menu WHERE category=? AND branch=?", new String[]{category, branch});
-//        }
-//    }
-
-    //User Profile
-    public boolean updateUser(String username, String address, String password, String mobile) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put("address", address);
-        values.put("password", password);
-        values.put("mobile", mobile);
-
-        int result = db.update("Users", values, "username=?", new String[]{username});
-        return result > 0;
-    }
-
-    //  Delete user account
-    public boolean deleteUser(String username) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        int result = db.delete("Users", "username=?", new String[]{username});
-        return result > 0;
-    }
-
-
+    public boolean updateOrderLocation(int orderId, double latitude, double longitude) {
+    SQLiteDatabase db = this.getWritableDatabase();
+    ContentValues values = new ContentValues();
+    values.put("delivery_lat", latitude);
+    values.put("delivery_lng", longitude);
+    
+    int result = db.update("orders", values, "order_id=?", new String[]{String.valueOf(orderId)});
+    return result > 0;
+}
+public Cursor getOrderLocation(int orderId) {
+    SQLiteDatabase db = this.getReadableDatabase();
+    return db.rawQuery("SELECT delivery_lat, delivery_lng FROM orders WHERE order_id=?", 
+     new String[]{String.valueOf(orderId)});
+}
+public Cursor getDeliveryOrders() {
+    SQLiteDatabase db = this.getReadableDatabase();
+    return db.rawQuery("SELECT * FROM orders WHERE status IN ('Preparing', 'Out for Delivery')", null);
+}
 }

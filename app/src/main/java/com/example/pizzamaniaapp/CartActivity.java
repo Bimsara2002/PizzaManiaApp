@@ -24,8 +24,9 @@ public class CartActivity extends AppCompatActivity {
     ArrayList<String> cartNames, cartPrices, cartQuantities;
     ArrayList<Integer> cartImages;
 
-    String currentUser = "Pehesara"; // replace with actual user
+    String currentUser = "Pehsara"; // replace with logged-in username
     double total = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,58 +49,60 @@ public class CartActivity extends AppCompatActivity {
         cartRecyclerView.setAdapter(adapter);
         cartRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        //Update by Dilshan
         checkoutBtn.setOnClickListener(v -> {
-            if (total == 0) {
-                Toast.makeText(this, "Cart is empty!", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-            boolean success = DBHelper.insertOrder(currentUser, total, "Pending");
-            if (success) {
-                DBHelper.clearCart(currentUser);
-                Toast.makeText(this, "Checkout complete! Order placed.", Toast.LENGTH_SHORT).show();
-
-                Intent intent = new Intent(CartActivity.this, Customer_Checkout_Activity.class);
-                intent.putExtra("TOTAL_AMOUNT", total);
-                startActivity(intent);
-                finish();
-            } else {
-                Toast.makeText(this, "Failed to place order.", Toast.LENGTH_SHORT).show();
-            }
-        });
+    if (total == 0) {
+        Toast.makeText(this, "Cart is empty!", Toast.LENGTH_SHORT).show();
+        return;
     }
 
-    private void loadCartFromDB() {
-        cartNames.clear();
-        cartPrices.clear();
-        cartQuantities.clear();
-        cartImages.clear();
-        total = 0;
+    // Insert into Orders table
+    boolean success = DBHelper.insertOrder(currentUser, total, "Pending");
 
-        Cursor cursor = DBHelper.getCartItems(currentUser);
-        if (cursor != null && cursor.getCount() > 0) {
-            while (cursor.moveToNext()) {
-                String name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
-                double price = cursor.getDouble(cursor.getColumnIndexOrThrow("price"));
-                String qty = cursor.getString(cursor.getColumnIndexOrThrow("quantity"));
-                String imageName = cursor.getString(cursor.getColumnIndexOrThrow("image_url"));
-
-                int resId = getResources().getIdentifier(imageName, "drawable", getPackageName());
-
-                cartNames.add(name);
-                cartPrices.add(String.valueOf(price));
-                cartQuantities.add(qty);
-                cartImages.add(resId);
-
-                total += price * Integer.parseInt(qty);
-            }
-            cursor.close();
+    if (success) {
+        // Get the latest order ID (you might need to modify DBHelper to return the inserted ID)
+        Cursor cursor = DBHelper.getOrdersByUser(currentUser);
+        int orderId = -1;
+        if (cursor.moveToFirst()) {
+            orderId = cursor.getInt(cursor.getColumnIndexOrThrow("order_id"));
         }
+        cursor.close();
+
+        DBHelper.clearCart(currentUser);
+        
+        // Launch location picker
+        Intent locationIntent = new Intent(this, LocationPickerActivity.class);
+        locationIntent.putExtra("ORDER_ID", orderId);
+        startActivity(locationIntent);
+        
+        Toast.makeText(this, "Checkout complete! Please select delivery location.", Toast.LENGTH_SHORT).show();
+    } else {
+        Toast.makeText(this, "Failed to place order.", Toast.LENGTH_SHORT).show();
+    }
+});
+
+}
+
+    private void loadCartFromDB() {
+        Cursor cursor = DBHelper.getCartItems(currentUser);
+
+        while (cursor.moveToNext()) {
+            String name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
+            double price = cursor.getDouble(cursor.getColumnIndexOrThrow("price"));
+            String qty = cursor.getString(cursor.getColumnIndexOrThrow("quantity"));
+            String imageName = cursor.getString(cursor.getColumnIndexOrThrow("image_url"));
+
+            int resId = getResources().getIdentifier(imageName, "drawable", getPackageName());
+
+            cartNames.add(name);
+            cartPrices.add(String.valueOf(price));
+            cartQuantities.add(qty);
+            cartImages.add(resId);
+
+            total += price * Integer.parseInt(qty);
+        }
+        cursor.close();
 
         totalPrice.setText("Total: Rs. " + total);
-
-        if (adapter != null) {
-            adapter.notifyDataSetChanged();
-        }
     }
 }

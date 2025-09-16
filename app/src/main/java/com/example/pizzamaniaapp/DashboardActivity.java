@@ -1,27 +1,24 @@
-package com.example.pizzamaniaapp;
+package com.example.pizzamaniaapp; // <- keep your actual package
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 
 public class DashboardActivity extends AppCompatActivity {
 
-    CardView btnAdmin, btnCustomer;
-    ImageButton toggleAdminButton;
-    boolean isAdminVisible = false;
+    Button btnAdmin, btnCustomer,btnLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
-        btnAdmin = findViewById(R.id.adminCard);
-        btnCustomer = findViewById(R.id.customerCard);
-        toggleAdminButton = findViewById(R.id.toggleAdminButton);
+        btnAdmin = findViewById(R.id.btnAdmin);
+        btnCustomer = findViewById(R.id.btnCustomer);
+        btnLocation=findViewById(R.id.btnLocation);
 
         btnAdmin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,18 +34,10 @@ public class DashboardActivity extends AppCompatActivity {
             }
         });
 
-        toggleAdminButton.setOnClickListener(new View.OnClickListener() {
+        btnLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isAdminVisible) {
-                    btnAdmin.setVisibility(View.GONE);
-                    toggleAdminButton.setImageResource(android.R.drawable.arrow_up_float);
-                    isAdminVisible = false;
-                } else {
-                    btnAdmin.setVisibility(View.VISIBLE);
-                    toggleAdminButton.setImageResource(android.R.drawable.arrow_down_float);
-                    isAdminVisible = true;
-                }
+                startActivity(new Intent(DashboardActivity.this, BranchActivity.class));
             }
         });
     }
