@@ -32,11 +32,15 @@ android {
 }
 
 dependencies {
+    implementation("com.github.PayHereDevs:payhere-android-sdk:v3.0.17")
+    implementation("androidx.appcompat:appcompat:1.6.0")
 
+    implementation("com.google.code.gson:gson:2.8.0")
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
+    implementation(libs.play.services.recaptchabase)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

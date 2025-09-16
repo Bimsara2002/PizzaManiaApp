@@ -1,61 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="12dp"
-    android:background="#EEEEEE"
-    android:layout_marginBottom="8dp">
+    android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/orderUser"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="User"
-        android:textStyle="bold" />
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/orderTotal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Total: Rs. 0" />
+        <!-- Background Image -->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/admin_background"
+            android:scaleType="centerCrop" />
 
-    <TextView
-        android:id="@+id/orderStatus"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Status: Pending"
-        android:textColor="#000000" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:paddingTop="8dp">
-
-        <Button
-            android:id="@+id/btnPending"
-            android:layout_width="wrap_content"
+        <!-- White Content Box with Rounded Corners -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Pending" />
+            android:layout_margin="16dp"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:background="@android:color/white"
+            android:elevation="4dp"
+            android:clipToOutline="true"
+            android:outlineProvider="background">
 
-        <Button
-            android:id="@+id/btnPreparing"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Preparing" />
+            <!-- User Name -->
+            <TextView
+                android:id="@+id/orderUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="User Name"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="#212121"/>
 
-        <Button
-            android:id="@+id/btnOutForDelivery"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Out for Delivery" />
+            <!-- Total Amount -->
+            <TextView
+                android:id="@+id/orderTotal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Total: Rs. 0"
+                android:textSize="14sp"
+                android:textColor="#212121"
+                android:layout_marginTop="4dp"/>
 
-        <Button
-            android:id="@+id/btnDelivered"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Delivered" />
-    </LinearLayout>
-</LinearLayout>
+            <!-- Status -->
+            <TextView
+                android:id="@+id/orderStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Status: Pending"
+                android:textSize="14sp"
+                android:textColor="#FF5722"
+                android:layout_marginTop="2dp"
+                android:textStyle="bold"/>
+
+            <!-- Action Buttons: 2 rows with 2 buttons each -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="8dp"
+                android:weightSum="2"
+                android:spacing="4dp">
+
+                <!-- First Row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:layout_marginBottom="4dp">
+
+                    <Button
+                        android:id="@+id/btnPending"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:text="Pending"
+                        android:textColor="#FFFFFF"
+                        android:backgroundTint="#FFA726"
+                        android:textSize="12sp"
+                        android:layout_marginEnd="4dp"/>
+
+                    <Button
+                        android:id="@+id/btnPreparing"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:text="Preparing"
+                        android:textColor="#FFFFFF"
+                        android:backgroundTint="#FFA726"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+
+                <!-- Second Row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <Button
+                        android:id="@+id/btnOutForDelivery"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:text="Out"
+                        android:textColor="#FFFFFF"
+                        android:backgroundTint="#FFA726"
+                        android:textSize="12sp"
+                        android:layout_marginEnd="4dp"/>
+
+                    <Button
+                        android:id="@+id/btnDelivered"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:text="Delivered"
+                        android:textColor="#FFFFFF"
+                        android:backgroundTint="#FFA726"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </FrameLayout>
+</androidx.cardview.widget.CardView>

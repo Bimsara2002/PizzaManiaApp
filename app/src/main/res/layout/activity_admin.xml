@@ -1,58 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/admin_ui"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:padding="24dp">
+    android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/btnAddProduct"
-        android:layout_width="250dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="16dp"
-        android:text="➕ Add Product"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        android:background="@drawable/btn_admin"/>
+    <!-- Background Image -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/admin_background"
+        android:scaleType="centerCrop" />
 
-    <Button
-        android:id="@+id/btnUpdateProduct"
-        android:layout_width="250dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="16dp"
-        android:text="✏️ Update Product"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        android:background="@drawable/btn_admin"/>
+    <!-- Semi-transparent overlay for readability -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000" />
 
-    <Button
-        android:id="@+id/btnDeleteProduct"
-        android:layout_width="250dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="16dp"
-        android:text="🗑️ Delete Product"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        android:background="@drawable/btn_admin"/>
+    <!-- Top Logo -->
+    <ImageView
+        android:id="@+id/imgLogo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="40dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/chief_pizza"
+        android:contentDescription="App Logo"
+        android:scaleType="fitCenter" />
 
-    <Button
-        android:id="@+id/btnViewUsers"
-        android:layout_width="250dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="16dp"
-        android:text="👥 View Users"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        android:background="@drawable/btn_admin"/>
+    <!-- Dashboard Title -->
+    <TextView
+        android:id="@+id/tvAdminTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imgLogo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="MANAGE DASHBOARD"
+        android:textColor="#FFB74D"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/btnOrder"
-        android:layout_width="250dp"
-        android:layout_height="60dp"
-        android:text="📦 Order Status"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        android:background="@drawable/btn_admin"/>
-</LinearLayout>
+    <!-- Buttons Container -->
+    <LinearLayout
+        android:id="@+id/btnContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvAdminTitle"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingHorizontal="24dp">
+
+        <Button
+            android:id="@+id/btnAddProduct"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="16dp"
+            android:text="➕ Add Product"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:backgroundTint="#FFA726" />
+
+        <Button
+            android:id="@+id/btnUpdateProduct"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="16dp"
+            android:text="✏️ Update Product"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:backgroundTint="#FFA726" />
+
+        <Button
+            android:id="@+id/btnDeleteProduct"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="16dp"
+            android:text="🗑️ Delete Product"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:backgroundTint="#FFA726" />
+
+        <Button
+            android:id="@+id/btnViewUsers"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="16dp"
+            android:text="👥 View Users"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:backgroundTint="#FFA726" />
+
+        <Button
+            android:id="@+id/btnOrder"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:text="📦 Order Status"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:backgroundTint="#FFA726" />
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -19,3 +19,6 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+#ProGuard rule To Kep Keep PayHere SDK modelclasses and constants
+-keep class lk.payhere.** {*; }

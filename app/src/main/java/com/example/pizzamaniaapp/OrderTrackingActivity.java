@@ -16,12 +16,13 @@ public class OrderTrackingActivity extends AppCompatActivity {
     RecyclerView ordersRecyclerView;
     OrderAdapter orderAdapter;
     DBHelper dbHelper;
-    String currentUser = "Pehsara";
+    String currentUser = "Pehesara";
 
-    ArrayList<Integer> orderIds;
-    ArrayList<String> orderStatuses;
-    ArrayList<String> orderTotals;
-    ArrayList<String> orderTimes;
+    ArrayList<Integer> orderIds = new ArrayList<>();
+    ArrayList<String> orderStatuses = new ArrayList<>();
+    ArrayList<String> orderTotals = new ArrayList<>();
+    ArrayList<String> orderTimes = new ArrayList<>();
+
     Handler handler = new Handler(); // for auto-refresh
 
     @Override
@@ -32,14 +33,13 @@ public class OrderTrackingActivity extends AppCompatActivity {
         ordersRecyclerView = findViewById(R.id.ordersRecyclerView);
         dbHelper = new DBHelper(this);
 
-        orderIds = new ArrayList<>();
-        orderStatuses = new ArrayList<>();
-        orderTotals = new ArrayList<>();
-        orderTimes = new ArrayList<>();
+        orderAdapter = new OrderAdapter(this, orderIds, orderStatuses, orderTotals, orderTimes);
+        ordersRecyclerView.setAdapter(orderAdapter);
+        ordersRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         loadOrders();
 
-        // auto refresh every 5 seconds
+        // auto-refresh every 5 seconds
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -47,26 +47,27 @@ public class OrderTrackingActivity extends AppCompatActivity {
                 handler.postDelayed(this, 5000);
             }
         }, 5000);
-
-        orderAdapter = new OrderAdapter(this, orderIds, orderStatuses, orderTotals, orderTimes);
-        ordersRecyclerView.setAdapter(orderAdapter);
-        ordersRecyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
     private void loadOrders() {
         Cursor cursor = dbHelper.getOrdersByUser(currentUser);
 
-        if (cursor.getCount() == 0) {
-            Toast.makeText(this, "No orders found!", Toast.LENGTH_SHORT).show();
-            return;
-        }
+        // Clear previous data
+        orderIds.clear();
+        orderStatuses.clear();
+        orderTotals.clear();
+        orderTimes.clear();
 
-        while (cursor.moveToNext()) {
-            orderIds.add(cursor.getInt(cursor.getColumnIndexOrThrow("order_id")));
-            orderStatuses.add(cursor.getString(cursor.getColumnIndexOrThrow("status")));
-            orderTotals.add(cursor.getString(cursor.getColumnIndexOrThrow("total_price")));
-            orderTimes.add(cursor.getString(cursor.getColumnIndexOrThrow("order_time")));
+        if (cursor != null && cursor.getCount() > 0) {
+            while (cursor.moveToNext()) {
+                orderIds.add(cursor.getInt(cursor.getColumnIndexOrThrow("order_id")));
+                orderStatuses.add(cursor.getString(cursor.getColumnIndexOrThrow("status")));
+                orderTotals.add(cursor.getString(cursor.getColumnIndexOrThrow("total_price")));
+                orderTimes.add(cursor.getString(cursor.getColumnIndexOrThrow("order_time")));
+            }
         }
-        cursor.close();
+        if(cursor != null) cursor.close();
+
+        orderAdapter.notifyDataSetChanged();
     }
 }

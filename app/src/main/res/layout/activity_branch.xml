@@ -1,142 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="12dp">
+    android:background="@android:color/background_dark">
 
-    <LinearLayout
+    <!-- Gradient Overlay -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:drawable/screen_background_dark_transparent" />
+
+    <!-- Top Logo -->
+    <ImageView
+        android:id="@+id/imgLogo"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="App Logo"
+        android:scaleType="fitCenter"
+        android:src="@drawable/chief_pizza" />
+
+    <!-- Scroll Content (Branches Cards) -->
+    <ScrollView
+        android:id="@+id/scrollBranches"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
-        android:spacing="12dp">
+        android:layout_below="@id/imgLogo"
+        android:layout_marginTop="20dp"
+        android:padding="12dp">
 
-        <!-- Title -->
-        <TextView
-            android:id="@+id/tvBranchTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Our Branches"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:padding="10dp"
-            android:gravity="center"/>
-
-        <!-- Colombo Branch Card -->
-        <androidx.cardview.widget.CardView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            card_view:cardCornerRadius="12dp"
-            card_view:cardElevation="6dp">
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:spacing="12dp">
 
-            <LinearLayout
+            <!-- Colombo Branch Card -->
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="12dp">
+                android:layout_marginBottom="16dp"
+                card_view:cardCornerRadius="12dp"
+                card_view:cardElevation="6dp">
 
-                <!-- Branch Image -->
-                <ImageView
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:scaleType="centerCrop"
-                    />
-
-                <!-- Branch Details -->
-                <TextView
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="📍 Colombo Branch"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:paddingTop="8dp"/>
+                    android:orientation="vertical"
+                    android:padding="12dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Address: No. 123, Galle Road, Colombo"
-                    android:paddingTop="5dp"/>
+                    <!-- Branch Image -->
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/branch_colombo" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Contact: 011-2345678"/>
+                    <!-- Branch Details -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="📍 Colombo Branch"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:paddingTop="8dp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Open: 10 AM - 11 PM"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Address: No. 123, Galle Road, Colombo"
+                        android:paddingTop="5dp" />
 
-                <!-- Button -->
-                <Button
-                    android:id="@+id/btnColomboMap"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="View on Map"
-                    android:layout_marginTop="8dp"
-                    android:backgroundTint="#4CAF50"
-                    android:textColor="#ffffff"/>
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Contact: 011-2345678" />
 
-        <!-- Galle Branch Card -->
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            card_view:cardCornerRadius="12dp"
-            card_view:cardElevation="6dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Open: 10 AM - 11 PM" />
 
-            <LinearLayout
+                    <!-- Button -->
+                    <Button
+                        android:id="@+id/btnColomboMap"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="View on Map"
+                        android:layout_marginTop="8dp"
+                        android:backgroundTint="#4CAF50"
+                        android:textColor="#ffffff" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Galle Branch Card -->
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="12dp">
+                card_view:cardCornerRadius="12dp"
+                card_view:cardElevation="6dp">
 
-                <!-- Branch Image -->
-                <ImageView
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:scaleType="centerCrop"
-                     />
-
-                <!-- Branch Details -->
-                <TextView
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Galle Branch"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:paddingTop="8dp"/>
+                    android:orientation="vertical"
+                    android:padding="12dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Address: No. 45, Main Street, Galle"
-                    android:paddingTop="5dp"/>
+                    <!-- Branch Image -->
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/branch_galle" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Contact: 091-3456789"/>
+                    <!-- Branch Details -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="📍 Galle Branch"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:paddingTop="8dp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Open: 10 AM - 11 PM"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Address: No. 45, Main Street, Galle"
+                        android:paddingTop="5dp" />
 
-                <!-- Button -->
-                <Button
-                    android:id="@+id/btnGalleMap"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="View on Map"
-                    android:layout_marginTop="8dp"
-                    android:backgroundTint="#4CAF50"
-                    android:textColor="#ffffff"/>
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Contact: 091-3456789" />
 
-    </LinearLayout>
-</ScrollView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Open: 10 AM - 11 PM" />
+
+                    <!-- Button -->
+                    <Button
+                        android:id="@+id/btnGalleMap"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="View on Map"
+                        android:layout_marginTop="8dp"
+                        android:backgroundTint="#4CAF50"
+                        android:textColor="#ffffff" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

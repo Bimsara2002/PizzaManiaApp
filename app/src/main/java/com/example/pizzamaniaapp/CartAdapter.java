@@ -39,7 +39,11 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         holder.cartItemName.setText(cartNames.get(position));
         holder.cartItemPrice.setText("Rs. " + cartPrices.get(position));
         holder.cartItemQuantity.setText("Qty: " + cartQuantities.get(position));
-        holder.cartItemImage.setImageResource(cartImages.get(position));
+        if (cartImages.get(position) != 0) {
+            holder.cartItemImage.setImageResource(cartImages.get(position));
+        } else {
+            holder.cartItemImage.setImageResource(R.drawable.sample_pizza); // fallback image
+        }
     }
 
     @Override
@@ -60,4 +64,3 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         }
     }
 }
-

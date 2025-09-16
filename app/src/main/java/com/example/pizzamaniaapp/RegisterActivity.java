@@ -10,8 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText etUsername, etPassword, etMobile;
-    Button btnRegister, btnGoLogin, btnViewUsers;
+    EditText etUsername, etPassword, etMobile,etAddress;
+    Button btnRegister, btnGoLogin;
     DBHelper DB;
 
     @Override
@@ -22,27 +22,28 @@ public class RegisterActivity extends AppCompatActivity {
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
         etMobile = findViewById(R.id.etMobile);
+        etAddress=findViewById(R.id.etAddress);
         btnRegister = findViewById(R.id.btnRegister);
         btnGoLogin = findViewById(R.id.btnGoLogin);
 
-
         DB = new DBHelper(this);
 
-        // Register user
         btnRegister.setOnClickListener(v -> {
             String user = etUsername.getText().toString();
             String pass = etPassword.getText().toString();
             String mob = etMobile.getText().toString();
+            String address=etAddress.getText().toString();
 
-            if (user.equals("") || pass.equals("") || mob.equals("")) {
+            if (user.equals("") || pass.equals("") || mob.equals("")|| address.equals("")) {
                 Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
             } else {
                 Boolean checkUser = DB.checkUsername(user);
                 if (!checkUser) {
-                    Boolean insert = DB.insertData(user, pass, mob);
+                    Boolean insert = DB.insertData(user, pass, mob,address);
                     if (insert) {
                         Toast.makeText(this, "Registered Successfully!", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                        finish();
                     } else {
                         Toast.makeText(this, "Registration Failed!", Toast.LENGTH_SHORT).show();
                     }
@@ -52,11 +53,9 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
-
-
-        // Go to Login screen
         btnGoLogin.setOnClickListener(v -> {
             startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+            finish();
         });
     }
 }

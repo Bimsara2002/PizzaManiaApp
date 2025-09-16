@@ -8,8 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class ViewUsersActivity extends AppCompatActivity {
 
-    DBHelper dbHelper;  // <-- Reference to your DB helper
-    TextView tvUsers;         // <-- To show results
+    DBHelper dbHelper;
+    TextView tvUsers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,18 +25,25 @@ public class ViewUsersActivity extends AppCompatActivity {
     private void displayUsers() {
         Cursor cursor = dbHelper.getAllUsers();
 
-        if (cursor.getCount() == 0) {
+        if (cursor == null || cursor.getCount() == 0) {
             tvUsers.setText("No users found");
             return;
         }
 
         StringBuilder builder = new StringBuilder();
         while (cursor.moveToNext()) {
-            builder.append("ID: ").append(cursor.getInt(0)).append("\n")
-                    .append("Username: ").append(cursor.getString(1)).append("\n")
-                    .append("Email: ").append(cursor.getString(2)).append("\n")
-                    .append("Mobile: ").append(cursor.getString(3)).append("\n\n");
+            int id = cursor.getInt(cursor.getColumnIndexOrThrow("id"));   // make sure DB has column `id`
+            String username = cursor.getString(cursor.getColumnIndexOrThrow("username"));
+            String email = cursor.getString(cursor.getColumnIndexOrThrow("email"));
+            String mobile = cursor.getString(cursor.getColumnIndexOrThrow("mobile"));
+
+            builder.append("ID: ").append(id).append("\n")
+                    .append("Username: ").append(username).append("\n")
+                    .append("Email: ").append(email).append("\n")
+                    .append("Mobile: ").append(mobile).append("\n\n");
         }
+        cursor.close();
+
         tvUsers.setText(builder.toString());
     }
 }
